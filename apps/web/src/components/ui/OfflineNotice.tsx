@@ -19,3 +19,4 @@ export const OfflineNotice: React.FC<OfflineNoticeProps> = ({ isOffline, lang = 
     </div>
   );
 };
+

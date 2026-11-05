@@ -295,3 +295,4 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
     </div>
   );
 };
+

@@ -169,14 +169,13 @@ export const SettingsModal: React.FC = () => {
         {/* Theme */}
         <div className="flex items-center justify-between">
           <span className="font-semibold text-[var(--fg)]">Tema Tampilan (Theme)</span>
-          <SegmentedPill<'light' | 'dark' | 'system'>
+          <SegmentedPill<'light' | 'dark'>
             size="sm"
             value={theme}
             onChange={setTheme}
             options={[
               { value: 'light', label: 'Terang' },
-              { value: 'dark', label: 'Gelap' },
-              { value: 'system', label: 'Sistem' }
+              { value: 'dark', label: 'Gelap' }
             ]}
           />
         </div>
@@ -279,7 +278,7 @@ export const PartnerConsoleModal: React.FC = () => {
   };
 
   return (
-    <BottomSheet isOpen={partnerModalOpen} onClose={() => setPartnerModalOpen(false)} title="Konsol Mitra BETANGGO (P-01/P-03)">
+    <BottomSheet isOpen={partnerModalOpen} onClose={() => setPartnerModalOpen(false)} title="Konsol Mitra BetangGO (P-01/P-03)">
       <div className="flex flex-col gap-4 py-2 text-xs">
         <div className="text-[var(--muted)]">
           Alat mitra wisata di Kalimantan Tengah untuk memvalidasi voucher wisatawan secara offline.
@@ -347,7 +346,7 @@ export const AdminConsoleModal: React.FC = () => {
   const { adminModalOpen, setAdminModalOpen, activeDisruptions, showToast } = useApp();
 
   return (
-    <BottomSheet isOpen={adminModalOpen} onClose={() => setAdminModalOpen(false)} title="Konsol Admin BETANGGO (A-01/A-04)">
+    <BottomSheet isOpen={adminModalOpen} onClose={() => setAdminModalOpen(false)} title="Konsol Admin BetangGO (A-01/A-04)">
       <div className="flex flex-col gap-4 py-2 text-xs">
         <div className="p-3 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--border)]">
           <div className="font-bold text-[var(--fg)] mb-1">Status Sistem & Data Seed</div>
@@ -494,3 +493,4 @@ export const AskAiModal: React.FC = () => {
     </BottomSheet>
   );
 };
+

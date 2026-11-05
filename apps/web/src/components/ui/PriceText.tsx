@@ -31,3 +31,4 @@ export const PriceText: React.FC<PriceTextProps> = ({
     </span>
   );
 };
+

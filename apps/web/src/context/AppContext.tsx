@@ -29,8 +29,8 @@ export interface OfflineMapPack {
 export interface AppContextType {
   lang: Language;
   setLang: (l: Language) => void;
-  theme: 'light' | 'dark' | 'system';
-  setTheme: (t: 'light' | 'dark' | 'system') => void;
+  theme: 'light' | 'dark';
+  setTheme: (t: 'light' | 'dark') => void;
   isOffline: boolean;
   setIsOffline: (val: boolean) => void;
   activeTab: NavTab;
@@ -68,8 +68,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return (localStorage.getItem('betanggo_lang') as Language) || 'id';
   });
 
-  const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>(() => {
-    return (localStorage.getItem('betanggo_theme') as 'light' | 'dark' | 'system') || 'system';
+  const [theme, setThemeState] = useState<'light' | 'dark'>(() => {
+    return (localStorage.getItem('betanggo_theme') as 'light' | 'dark') || 'light';
   });
 
   const [isOffline, setIsOffline] = useState(false);
@@ -107,11 +107,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Apply theme to HTML tag
   useEffect(() => {
     localStorage.setItem('betanggo_theme', theme);
-    let resolved = theme;
-    if (theme === 'system') {
-      resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-theme', resolved);
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const setLang = (newLang: Language) => {
@@ -120,7 +116,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     document.documentElement.setAttribute('lang', newLang);
   };
 
-  const setTheme = (newTheme: 'light' | 'dark' | 'system') => {
+  const setTheme = (newTheme: 'light' | 'dark') => {
     setThemeState(newTheme);
   };
 
@@ -271,3 +267,4 @@ export const useApp = () => {
   }
   return context;
 };
+

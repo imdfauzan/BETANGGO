@@ -48,9 +48,6 @@ export const BottomNavPill: React.FC<BottomNavPillProps> = ({
             >
               <Icon size={18} strokeWidth={isActive ? 2.2 : 1.75} className="shrink-0" />
               {isActive && <span className="truncate">{tab.label}</span>}
-              {!isActive && tab.dot && (
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[var(--accent)]" />
-              )}
             </button>
           );
         })}

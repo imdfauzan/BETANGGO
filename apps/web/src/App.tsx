@@ -39,11 +39,20 @@ export const AppContent: React.FC = () => {
     setSettingsOpen
   } = useApp();
 
-  const [showSplash, setShowSplash] = useState(true);
+  // Welcome screen only shows once on first visit
+  const [showSplash, setShowSplash] = useState(() => {
+    return !localStorage.getItem('betanggo_welcome_seen');
+  });
+
+  const handleDismissSplash = () => {
+    localStorage.setItem('betanggo_welcome_seen', 'true');
+    setShowSplash(false);
+  };
+
   const [currentView, setCurrentView] = useState<'main' | 'editor' | 'checkout'>('main');
 
   if (showSplash) {
-    return <SplashScreen onDismiss={() => setShowSplash(false)} lang={lang} />;
+    return <SplashScreen onDismiss={handleDismissSplash} lang={lang} />;
   }
 
   return (
@@ -130,3 +139,4 @@ export const AppContent: React.FC = () => {
     </MobileFrame>
   );
 };
+

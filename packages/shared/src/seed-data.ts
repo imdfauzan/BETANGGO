@@ -506,3 +506,4 @@ export const EMERGENCY_CONTACTS = [
     notes: 'UGD 24 Jam untuk wilayah Kobar & Tanjung Puting'
   }
 ];
+

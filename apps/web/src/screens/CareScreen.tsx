@@ -162,3 +162,4 @@ export const CareScreen: React.FC = () => {
     </div>
   );
 };
+

@@ -34,7 +34,7 @@ export const TripsScreen: React.FC = () => {
   const currentOrder = orders[0];
 
   return (
-    <div className="flex flex-col gap-4 px-4 pt-3 pb-8">
+    <div className="flex-1 flex flex-col gap-4 px-4 pt-3 pb-8 bg-[var(--bg)] min-h-[calc(100vh-140px)]">
       {/* Header */}
       <div>
         <h1 className="text-lg font-bold font-display text-[var(--fg)]">
@@ -58,7 +58,7 @@ export const TripsScreen: React.FC = () => {
 
       {/* Empty State */}
       {!currentOrder || orders.length === 0 ? (
-        <div className="py-16 text-center flex flex-col items-center">
+        <div className="py-16 text-center flex flex-col items-center bg-[var(--bg)]">
           <div className="w-14 h-14 rounded-full bg-[var(--surface-2)] text-[var(--muted)] flex items-center justify-center mb-3 border border-[var(--border)]">
             <QrCode size={26} />
           </div>
@@ -80,7 +80,7 @@ export const TripsScreen: React.FC = () => {
       ) : (
         <div className="flex flex-col gap-4">
           {/* Active Trip Summary Card */}
-          <SurfaceCard rounded="card" level={1} className="border-l-4 border-l-[var(--primary)] p-4">
+          <SurfaceCard rounded="card" level={1} className="border border-[var(--border)] p-4 shadow-sm">
             <div className="flex items-center justify-between mb-1.5">
               <StatusText status="confirmed" label={t('trip.voucher.confirmed', lang)} />
               <span className="text-[11px] font-mono font-bold text-[var(--muted)]">{currentOrder.id}</span>
@@ -201,7 +201,7 @@ export const TripsScreen: React.FC = () => {
           <div className="flex flex-col gap-3 py-2 text-xs">
             <div className="p-3 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--border)] flex justify-between items-center">
               <div>
-                <div className="font-bold text-[var(--fg)]">BETANGGO Invoice</div>
+                <div className="font-bold text-[var(--fg)]">Betang<span className="text-orange-500">GO</span> Invoice</div>
                 <div className="text-[11px] text-[var(--muted)]">{selectedInvoiceOrder.id}</div>
               </div>
               <span className="px-2 py-0.5 rounded-[var(--r-pill)] bg-[var(--success)]/20 text-[var(--success)] font-bold text-[10px]">
@@ -241,3 +241,4 @@ export const TripsScreen: React.FC = () => {
     </div>
   );
 };
+

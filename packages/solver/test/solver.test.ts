@@ -56,3 +56,4 @@ describe('BetangGo Solver Engine', () => {
     expect(replanned.days).toHaveLength(2);
   });
 });
+

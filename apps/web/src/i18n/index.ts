@@ -16,3 +16,4 @@ export function t(key: TranslationKey, lang: Language = 'id', vars?: Record<stri
 
   return text;
 }
+

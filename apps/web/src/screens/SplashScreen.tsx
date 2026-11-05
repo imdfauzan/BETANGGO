@@ -26,7 +26,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onDismiss, lang }) =
       <div className="flex flex-col items-center text-center my-auto">
         {/* SVG Motif of Dayak Huma Betang Stilt Roof */}
         <div className="w-24 h-24 mb-6 rounded-3xl bg-[#16241C] border border-[#2F7A56] p-4 flex items-center justify-center shadow-lg">
-          <svg viewBox="0 0 100 100" className="w-full h-full text-[#E2B53A]" fill="none" stroke="currentColor" strokeWidth="3">
+          <svg viewBox="0 0 100 100" className="w-full h-full text-[#9CC48C]" fill="none" stroke="currentColor" strokeWidth="3">
             {/* Curved Huma Betang Roof */}
             <path d="M10 50 Q 50 15 90 50" strokeLinecap="round" />
             <path d="M20 50 L 50 25 L 80 50" strokeWidth="2" />
@@ -35,13 +35,11 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onDismiss, lang }) =
             <line x1="32" y1="75" x2="32" y2="92" strokeWidth="3" />
             <line x1="50" y1="75" x2="50" y2="92" strokeWidth="3" />
             <line x1="68" y1="75" x2="68" y2="92" strokeWidth="3" />
-            {/* Dayak Sun Accent */}
-            <circle cx="50" cy="40" r="5" fill="currentColor" stroke="none" />
           </svg>
         </div>
 
         <h1 className="text-3xl font-display font-extrabold tracking-tight text-white mb-2">
-          BETANGGO
+          Betang<span className="text-orange-500">GO</span>
         </h1>
         <p className="text-sm font-medium text-[#9CC48C] max-w-xs mb-4">
           {lang === 'en' ? 'One conversation, one trip.' : 'Satu percakapan, satu perjalanan.'}
@@ -68,3 +66,4 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onDismiss, lang }) =
     </div>
   );
 };
+
