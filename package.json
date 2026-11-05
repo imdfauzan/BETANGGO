@@ -1,0 +1,20 @@
+{
+  "name": "betanggo-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @betanggo/web dev",
+    "build": "pnpm --filter @betanggo/web build",
+    "preview": "pnpm --filter @betanggo/web preview",
+    "test": "pnpm --filter @betanggo/solver test"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  }
+}

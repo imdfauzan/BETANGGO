@@ -1,0 +1,72 @@
+:root {
+  /* Brand */
+  --rimba-900: #0F2E21;
+  --rimba-700: #1F5A3F;
+  --rimba-500: #2F7A56;
+  --rimba-100: #D3E4D8;
+
+  --pakis-700: #4E7F43;
+  --pakis-600: #6FA25F;
+  --pakis-400: #9CC48C;
+  --pakis-100: #E1EEDB;
+
+  --rotan-700: #A87F0F;
+  --rotan-500: #E2B53A;
+  --rotan-100: #F6E8B8;
+
+  /* Semantic: light */
+  --bg: #E4ECE3;
+  --surface: #F5F8F4;
+  --surface-2: #EBF1EA;
+  --fg: #0F1A14;
+  --muted: #4A5A50;
+  --border: rgb(15 26 20 / .14);
+  --primary: var(--rimba-700);
+  --on-primary: #F2F7F1;
+  --accent: var(--rotan-500);
+  --on-accent: #0F1A14;
+  --danger: #B3382C;
+  --success: #2F7A56;
+  --warning: #A87F0F;
+
+  /* Glass */
+  --glass-bg: rgb(245 248 244 / .78);
+  --glass-border: rgb(255 255 255 / .65);
+  --glass-hi: rgb(255 255 255 / .50);
+  --glass-blur: 16px;
+  --scrim: rgb(15 26 20 / .35);
+  --shadow-float: 0 10px 28px rgb(15 46 33 / .18);
+
+  /* Radius */
+  --r-pill: 9999px;
+  --r-sheet: 32px;
+  --r-card-lg: 28px;
+  --r-card: 20px;
+  --r-media: 16px;
+  --r-input-multiline: 24px;
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #0F1A14;
+  --surface: #16241C;
+  --surface-2: #1D2E24;
+  --fg: #E8F0E7;
+  --muted: #9DB0A3;
+  --border: rgb(232 240 231 / .14);
+  --primary: var(--pakis-400);
+  --on-primary: #0F1A14;
+  --accent: var(--rotan-500);
+  --on-accent: #0F1A14;
+  --danger: #E57A6B;
+  --success: #9CC48C;
+  --warning: #E2B53A;
+  --glass-bg: rgb(22 36 28 / .75);
+  --glass-border: rgb(232 240 231 / .16);
+  --glass-hi: rgb(232 240 231 / .08);
+  --scrim: rgb(0 0 0 / .50);
+  --shadow-float: 0 10px 28px rgb(0 0 0 / .45);
+}
