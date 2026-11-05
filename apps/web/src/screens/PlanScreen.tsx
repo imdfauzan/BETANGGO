@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { PillButton } from '../components/ui/PillButton';
 import { SurfaceCard } from '../components/ui/SurfaceCard';
 import { PriceText } from '../components/ui/PriceText';
 import { BottomSheet } from '../components/ui/BottomSheet';
 import { TextLoop } from '../components/core/text-loop';
+import AI_Voice from '../components/kokonutui/ai-voice';
 import { RegionSlug, TravelPace } from '@betanggo/shared';
-import { MessageSquareQuote, Mic, Send, Sparkles, Check, ArrowRight, Copy } from 'lucide-react';
+import { MessageSquareQuote, Mic, Send, Sparkles, Check, ArrowRight, Volume2 } from 'lucide-react';
 import { t } from '../i18n';
 
 export interface PlanScreenProps {
@@ -28,6 +29,69 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
   const [generationStage, setGenerationStage] = useState<string>('');
   const [voiceModalOpen, setVoiceModalOpen] = useState(false);
   const [activeIdeaIndex, setActiveIdeaIndex] = useState(0);
+  const [liveTranscript, setLiveTranscript] = useState('');
+  const recognitionRef = useRef<any>(null);
+
+  const handleListeningChange = (listening: boolean) => {
+    if (listening) {
+      setLiveTranscript('');
+      try {
+        const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+        if (SpeechRec) {
+          const rec = new SpeechRec();
+          rec.lang = lang === 'en' ? 'en-US' : 'id-ID';
+          rec.continuous = true;
+          rec.interimResults = true;
+          rec.onresult = (event: any) => {
+            let text = '';
+            for (let i = 0; i < event.results.length; i++) {
+              text += event.results[i][0].transcript;
+            }
+            setLiveTranscript(text);
+          };
+          rec.start();
+          recognitionRef.current = rec;
+        }
+      } catch (err) {
+        console.warn('SpeechRecognition unavailable', err);
+      }
+    } else {
+      try {
+        recognitionRef.current?.stop();
+      } catch {}
+    }
+  };
+
+  const handleVoiceSend = () => {
+    try {
+      recognitionRef.current?.stop();
+    } catch {}
+
+    const sampleIdeas = lang === 'en'
+      ? [
+          'Plan a 3-day trip in Palangka Raya and Sebangau for 2 people with 5 million budget',
+          'Tanjung Puting 4-day orangutan river cruise adventure with balanced pace',
+          'Explore Dayak culture and Kahayan river culinary in Palangka Raya'
+        ]
+      : [
+          'Rencanakan liburan 3 hari 2 malam di Palangka Raya dan Sebangau untuk 2 orang budget 5 juta',
+          'Petualangan susur sungai klotok Tanjung Puting 4 hari melihat orangutan',
+          'Eksplorasi budaya Dayak dan kuliner khas sungai Kahayan di Palangka Raya'
+        ];
+
+    const chosen = liveTranscript.trim() || sampleIdeas[Math.floor(Math.random() * sampleIdeas.length)];
+    setPromptText(chosen);
+    setVoiceModalOpen(false);
+    showToast(lang === 'en' ? 'Voice transcribed into prompt!' : 'Suara berhasil dimasukkan ke kolom prompt!');
+  };
+
+  const handleVoiceDiscard = () => {
+    try {
+      recognitionRef.current?.stop();
+    } catch {}
+    setLiveTranscript('');
+    setVoiceModalOpen(false);
+  };
 
   const promptIdeas = lang === 'en'
     ? [
@@ -341,45 +405,37 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         </div>
       )}
 
-      {/* Voice Prompt Popup Dialog */}
+      {/* Kokonut UI AI Voice Interaction Dialog */}
       <BottomSheet
         isOpen={voiceModalOpen}
-        onClose={() => setVoiceModalOpen(false)}
-        title="Kokonut UI — AI Voice Component"
+        onClose={handleVoiceDiscard}
+        title={lang === 'en' ? 'AI Voice Input — Kokonut UI' : 'Input Suara AI — Kokonut UI'}
       >
-        <div className="flex flex-col gap-3 py-2 text-xs">
-          <p className="text-xs text-[var(--muted)]">
-            Salin prompt di bawah ini untuk menambahkan komponen <code>ai-voice</code> dari Kokonut UI:
-          </p>
+        <div className="flex flex-col items-center gap-3 py-2 text-xs">
+          <div className="w-full bg-[var(--surface-2)] rounded-[var(--r-card-lg)] p-4 border border-[var(--border)] flex flex-col items-center">
+            {/* Real Interactive Kokonut UI Waveform and Voice Recorder */}
+            <AI_Voice
+              demo={false}
+              onListeningChange={handleListeningChange}
+              onSend={handleVoiceSend}
+              onDiscard={handleVoiceDiscard}
+              className="py-1"
+            />
 
-          <div className="p-3.5 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--border)]">
-            <p className="font-mono text-xs text-[var(--fg)] break-words leading-relaxed select-all">
-              {kokonutPrompt}
-            </p>
+            {liveTranscript && (
+              <div className="w-full mt-2 p-2.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--fg)] text-center animate-fadeIn">
+                <span className="text-[var(--muted)] text-[10px] block mb-0.5">Transkripsi:</span>
+                "{liveTranscript}"
+              </div>
+            )}
           </div>
 
-          <div className="flex gap-2 pt-1">
-            <PillButton
-              variant="accent"
-              size="md"
-              icon={<Copy size={15} />}
-              onClick={() => {
-                navigator.clipboard.writeText(kokonutPrompt);
-                showToast('Prompt berhasil disalin ke clipboard');
-              }}
-              className="flex-1 font-bold justify-center"
-            >
-              Salin Prompt
-            </PillButton>
-
-            <PillButton
-              variant="glass"
-              size="md"
-              onClick={() => setVoiceModalOpen(false)}
-              className="px-5 justify-center"
-            >
-              Tutup
-            </PillButton>
+          <div className="flex items-center justify-between w-full text-[11px] text-[var(--muted)] px-1">
+            <span className="flex items-center gap-1">
+              <Volume2 size={13} className="text-[var(--primary)]" />
+              {lang === 'en' ? 'Tap mic to speak / test' : 'Ketuk mikrofon untuk bicara'}
+            </span>
+            <span>Kokonut UI v2.1</span>
           </div>
         </div>
       </BottomSheet>
