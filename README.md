@@ -75,3 +75,4 @@ BetangGO/
 - **Tema Terang & Gelap:** Penggantian tema instan tanpa FOUC (*flash of unstyled content*).
 - **Dual-Rail Payment Simulation:** QRIS dinamis dan kartu dengan label simulasi resmi.
 - **Trip Wallet Offline:** E-Voucher digital dengan QR code bertanda tangan kripto yang siap diverifikasi mitra tanpa sinyal internet.
+

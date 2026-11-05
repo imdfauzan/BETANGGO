@@ -3,8 +3,10 @@ import { useApp } from '../context/AppContext';
 import { PillButton } from '../components/ui/PillButton';
 import { SurfaceCard } from '../components/ui/SurfaceCard';
 import { PriceText } from '../components/ui/PriceText';
+import { BottomSheet } from '../components/ui/BottomSheet';
+import { TextLoop } from '../components/core/text-loop';
 import { RegionSlug, TravelPace } from '@betanggo/shared';
-import { MessageSquareQuote, Mic, Send, Sparkles, Check, ArrowRight } from 'lucide-react';
+import { MessageSquareQuote, Mic, Send, Sparkles, Check, ArrowRight, Copy } from 'lucide-react';
 import { t } from '../i18n';
 
 export interface PlanScreenProps {
@@ -12,7 +14,7 @@ export interface PlanScreenProps {
 }
 
 export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
-  const { lang, buildPlanWithAi, isOffline, activeItinerary } = useApp();
+  const { lang, buildPlanWithAi, isOffline, activeItinerary, showToast } = useApp();
 
   const [promptText, setPromptText] = useState('');
   const [region, setRegion] = useState<RegionSlug>('palangka-raya');
@@ -24,6 +26,24 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationStage, setGenerationStage] = useState<string>('');
+  const [voiceModalOpen, setVoiceModalOpen] = useState(false);
+  const [activeIdeaIndex, setActiveIdeaIndex] = useState(0);
+
+  const promptIdeas = lang === 'en'
+    ? [
+        '5 days in Palangka Raya budget 10M',
+        'See orangutans in Tanjung Puting for 3 days',
+        'Dayak cultural & Betang house tour',
+        'Kahayan river cruise & local culinary trip',
+        'Relaxing weekend family trip'
+      ]
+    : [
+        '5 hari di Palangka Raya budget 10 juta',
+        'Lihat orangutan di Tanjung Puting 3 hari',
+        'Wisata budaya Dayak & Rumah Betang',
+        'Susur sungai Kahayan & kuliner ikan bakar',
+        'Trip santai keluarga akhir pekan'
+      ];
 
   const interestOptions = [
     { id: 'nature', label: lang === 'en' ? 'Rainforest & Peatland' : 'Alam Gambut' },
@@ -77,6 +97,8 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
     }, 700);
   };
 
+  const kokonutPrompt = 'Add the ai-voice component from Kokonut UI to this project with npx shadcn@latest add https://kokonutui.com/r/ai-voice.json, then show me how to use it.';
+
   return (
     <div className="flex flex-col gap-4 px-4 pt-3 pb-8">
       {/* Header */}
@@ -94,34 +116,60 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         </div>
       </div>
 
-      {/* Main Prompt Input Box */}
+      {/* Main Prompt Input Box (Extended Height & TextLoop Effect) */}
       <SurfaceCard rounded="lg" level={1} className="p-4 shadow-sm border border-[var(--border)]">
+        {/* Animated TextLoop Suggestion Bar */}
+        <div
+          onClick={() => setPromptText(promptIdeas[activeIdeaIndex])}
+          className="mb-2.5 py-1.5 px-3 rounded-[var(--r-card)] bg-[var(--surface-2)] hover:border-[var(--primary)] transition-all cursor-pointer flex items-center gap-2 text-xs border border-[var(--border)] select-none"
+          title="Klik untuk mengisi kalimat prompt"
+        >
+          <Sparkles size={13} className="text-[var(--accent)] shrink-0" />
+          <span className="font-semibold text-[var(--fg)] shrink-0">
+            {lang === 'en' ? 'Try asking:' : 'Ide rencana:'}
+          </span>
+          <TextLoop
+            className="text-xs text-[var(--primary)] font-medium truncate"
+            onIndexChange={(idx) => setActiveIdeaIndex(idx)}
+            interval={2.8}
+          >
+            {promptIdeas.map((idea, idx) => (
+              <span key={idx} className="cursor-pointer hover:underline">{idea}</span>
+            ))}
+          </TextLoop>
+        </div>
+
+        {/* Spacious Textarea */}
         <textarea
-          rows={3}
+          rows={5}
           value={promptText}
           onChange={(e) => setPromptText(e.target.value)}
           placeholder={t('plan.placeholder', lang)}
-          className="w-full bg-transparent text-sm text-[var(--fg)] placeholder:text-[var(--muted)] focus:outline-none resize-none leading-relaxed"
+          className="w-full min-h-[130px] bg-transparent text-sm text-[var(--fg)] placeholder:text-[var(--muted)] focus:outline-none resize-none leading-relaxed"
         />
 
-        <div className="mt-3 pt-2.5 border-t border-[var(--border)] flex items-center justify-between">
-          <button
+        {/* Action Button Bar */}
+        <div className="mt-3 pt-3 border-t border-[var(--border)] flex items-center justify-between gap-2.5">
+          {/* Voice Input Button in Palette Accent Yellow */}
+          <PillButton
             type="button"
-            onClick={() => setPromptText(lang === 'en' ? '5 days 4 nights in Palangka Raya with 10 million budget' : '5 hari 4 malam di Palangka Raya, budget 10 juta')}
-            className="flex items-center gap-1.5 text-xs text-[var(--muted)] hover:text-[var(--primary)]"
-            title="Simulasi Web Speech API"
+            variant="accent"
+            size="sm"
+            icon={<Mic size={15} />}
+            onClick={() => setVoiceModalOpen(true)}
+            className="font-bold px-4 text-xs shadow-sm hover:brightness-105 active:scale-95"
           >
-            <Mic size={16} />
-            <span>{lang === 'en' ? 'Preset voice prompt' : 'Input suara'}</span>
-          </button>
+            {lang === 'en' ? 'Voice Input' : 'Input Suara'}
+          </PillButton>
 
+          {/* Build Plan Button */}
           <PillButton
             variant="primary"
             size="sm"
             icon={<Send size={14} />}
             disabled={isGenerating}
             onClick={() => handleStartPlanning(promptText)}
-            className="font-bold px-4"
+            className="font-bold px-4 text-xs shadow-sm"
           >
             {isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}
           </PillButton>
@@ -292,7 +340,49 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
           </SurfaceCard>
         </div>
       )}
+
+      {/* Voice Prompt Popup Dialog */}
+      <BottomSheet
+        isOpen={voiceModalOpen}
+        onClose={() => setVoiceModalOpen(false)}
+        title="Kokonut UI — AI Voice Component"
+      >
+        <div className="flex flex-col gap-3 py-2 text-xs">
+          <p className="text-xs text-[var(--muted)]">
+            Salin prompt di bawah ini untuk menambahkan komponen <code>ai-voice</code> dari Kokonut UI:
+          </p>
+
+          <div className="p-3.5 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--border)]">
+            <p className="font-mono text-xs text-[var(--fg)] break-words leading-relaxed select-all">
+              {kokonutPrompt}
+            </p>
+          </div>
+
+          <div className="flex gap-2 pt-1">
+            <PillButton
+              variant="accent"
+              size="md"
+              icon={<Copy size={15} />}
+              onClick={() => {
+                navigator.clipboard.writeText(kokonutPrompt);
+                showToast('Prompt berhasil disalin ke clipboard');
+              }}
+              className="flex-1 font-bold justify-center"
+            >
+              Salin Prompt
+            </PillButton>
+
+            <PillButton
+              variant="glass"
+              size="md"
+              onClick={() => setVoiceModalOpen(false)}
+              className="px-5 justify-center"
+            >
+              Tutup
+            </PillButton>
+          </div>
+        </div>
+      </BottomSheet>
     </div>
   );
 };
-

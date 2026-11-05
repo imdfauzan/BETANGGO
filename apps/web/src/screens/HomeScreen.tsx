@@ -5,63 +5,28 @@ import { GlassCard } from '../components/ui/GlassCard';
 import { SurfaceCard } from '../components/ui/SurfaceCard';
 import { PriceText } from '../components/ui/PriceText';
 import { SEED_DESTINATIONS } from '@betanggo/shared';
-import { Compass, MessageSquareQuote, ArrowRight, AlertTriangle } from 'lucide-react';
+import { Compass, MessageSquareQuote, ArrowRight } from 'lucide-react';
 import { t } from '../i18n';
 
 export const HomeScreen: React.FC = () => {
   const {
     lang,
     setActiveTab,
-    activeDisruptions,
     activeItinerary,
     orders,
     setDetailModalDestId
   } = useApp();
 
   const featured = SEED_DESTINATIONS.filter(d => d.kind === 'attraction').slice(0, 4);
-  const activeDisruption = activeDisruptions[0];
   const hasTrip = orders.length > 0;
-
-  const promptPresets = [
-    {
-      id: 'p1',
-      label: lang === 'en' ? '5D4N Palangka Raya' : '5 Hari di Palangka Raya',
-    },
-    {
-      id: 'p2',
-      label: lang === 'en' ? 'Tanjung Puting Orangutan 3D' : 'Orangutan Tanjung Puting 3 Hari',
-    },
-    {
-      id: 'p3',
-      label: lang === 'en' ? 'Dayak Cultural Tour' : 'Wisata Budaya Dayak',
-    }
-  ];
 
   return (
     <div className="flex flex-col gap-4 px-4 pt-3 pb-8">
-      {/* Active Disruption Banner (Minimal) */}
-      {activeDisruption && (
-        <div
-          onClick={() => setActiveTab('care')}
-          className="w-full py-2 px-3 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--warning)]/40 flex items-center justify-between cursor-pointer active:scale-98 transition-all"
-        >
-          <div className="flex items-center gap-2">
-            <AlertTriangle size={15} className="text-[var(--warning)] shrink-0" />
-            <span className="text-xs text-[var(--fg)] line-clamp-1">
-              {activeDisruption.title[lang] || activeDisruption.title.id}
-            </span>
-          </div>
-          <span className="text-[11px] font-bold text-[var(--primary)] shrink-0 ml-2">
-            {lang === 'en' ? 'Info' : 'Detail'}
-          </span>
-        </div>
-      )}
-
-      {/* Hero Section (Clean & Minimal) */}
-      <div className="relative w-full rounded-[var(--r-card-lg)] overflow-hidden border border-[var(--border)] min-h-[350px] flex flex-col justify-end p-4">
-        {/* Scrim & Hero Image */}
+      {/* Hero Section (Expanded height to fill top space with beautiful nature) */}
+      <div className="relative w-full rounded-[var(--r-card-lg)] overflow-hidden border border-[var(--border)] min-h-[460px] flex flex-col justify-end p-4 shadow-sm">
+        {/* Scrim & Hero Image - Central Kalimantan Rainforest */}
         <img
-          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&auto=format&fit=crop&q=80"
+          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80"
           alt="Kalimantan Tengah"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -99,20 +64,6 @@ export const HomeScreen: React.FC = () => {
             </PillButton>
           </div>
         </GlassCard>
-      </div>
-
-      {/* Quick Prompt Presets */}
-      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
-        {promptPresets.map((preset) => (
-          <button
-            key={preset.id}
-            type="button"
-            onClick={() => setActiveTab('ai')}
-            className="h-8 px-3 rounded-[var(--r-pill)] border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--fg)] text-xs font-medium whitespace-nowrap active:scale-95 transition-all"
-          >
-            {preset.label}
-          </button>
-        ))}
       </div>
 
       {/* Continue Active Trip / Plan (Clean, NO orange left border) */}
