@@ -18,7 +18,7 @@ export const PillButton: React.FC<PillButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all active:scale-98 select-none disabled:opacity-50 disabled:pointer-events-none rounded-[var(--r-pill)] border';
+  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all active:scale-98 select-none disabled:opacity-50 disabled:pointer-events-none rounded-[var(--r-pill)] border whitespace-nowrap';
 
   const sizeStyles = {
     sm: 'h-10 px-4 text-xs gap-1.5 min-w-[44px]',

@@ -58,7 +58,7 @@ export const HomeScreen: React.FC = () => {
       )}
 
       {/* Hero Section (Clean & Minimal) */}
-      <div className="relative w-full rounded-[var(--r-card-lg)] overflow-hidden border border-[var(--border)] min-h-[300px] flex flex-col justify-end p-4">
+      <div className="relative w-full rounded-[var(--r-card-lg)] overflow-hidden border border-[var(--border)] min-h-[350px] flex flex-col justify-end p-4">
         {/* Scrim & Hero Image */}
         <img
           src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&auto=format&fit=crop&q=80"
@@ -76,14 +76,14 @@ export const HomeScreen: React.FC = () => {
             {t('home.hero.subtitle', lang)}
           </p>
 
-          {/* Action Buttons */}
-          <div className="flex gap-2">
+          {/* Action Buttons: Stacked vertically for clean mobile ergonomics */}
+          <div className="flex flex-col gap-2.5 w-full">
             <PillButton
               variant="primary"
               size="md"
-              icon={<MessageSquareQuote size={16} />}
+              icon={<MessageSquareQuote size={18} />}
               onClick={() => setActiveTab('ai')}
-              className="flex-1 font-bold justify-center"
+              className="w-full font-bold justify-center shadow-sm"
             >
               {t('home.cta.plan', lang)}
             </PillButton>
@@ -91,9 +91,9 @@ export const HomeScreen: React.FC = () => {
             <PillButton
               variant="glass"
               size="md"
-              icon={<Compass size={16} />}
+              icon={<Compass size={18} />}
               onClick={() => setActiveTab('explore')}
-              className="px-4 justify-center"
+              className="w-full justify-center"
             >
               {t('home.cta.explore', lang)}
             </PillButton>
