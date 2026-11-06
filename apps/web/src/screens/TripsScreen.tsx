@@ -34,7 +34,7 @@ export const TripsScreen: React.FC = () => {
   const currentOrder = orders[0];
 
   return (
-    <div className="flex-1 flex flex-col gap-4 px-4 pt-3 pb-8 bg-[var(--bg)] min-h-[calc(100vh-140px)]">
+    <div className="flex-1 flex flex-col gap-4 px-4 pt-3 pb-8 bg-[var(--bg)] min-h-full">
       {/* Header */}
       <div>
         <h1 className="text-lg font-bold font-display text-[var(--fg)]">

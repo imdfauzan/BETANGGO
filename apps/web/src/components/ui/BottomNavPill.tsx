@@ -30,7 +30,7 @@ export const BottomNavPill: React.FC<BottomNavPillProps> = ({
   return (
     <nav
       aria-label="Navigasi Utama"
-      className={`pointer-events-auto glass-panel h-16 w-full max-w-[400px] rounded-[var(--r-pill)] border border-[var(--glass-border)] px-2 py-1 flex items-center justify-between shadow-xl ${className}`}
+      className={`glass-panel h-16 w-full max-w-[420px] rounded-[var(--r-pill)] border border-[var(--glass-border)] px-2 py-1 flex items-center justify-between shadow-2xl select-none ${className}`}
     >
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;

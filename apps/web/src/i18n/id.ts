@@ -50,7 +50,7 @@ export const id = {
   'destination.save_offline': 'Simpan offline',
   'destination.saved_offline': 'Tersimpan offline',
   'destination.add_to_plan': 'Tambah ke rencana',
-  'destination.ask_ai': 'Tanya Betang AI',
+  'destination.ask_ai': 'Buat dengan Betang AI',
   'destination.open_until': 'Buka sampai',
   'destination.demo_note': 'Data demo. Belum diverifikasi lapangan.',
 
@@ -66,7 +66,7 @@ export const id = {
   'plan.title': 'Betang AI',
   'plan.tagline': 'Pemandu liburanmu',
   'plan.placeholder': 'Aku ingin liburan 5 hari 4 malam di Palangka Raya, budget 10 juta untuk 2 orang...',
-  'plan.submit': 'Tanya Betang AI',
+  'plan.submit': 'Buat dengan Betang AI',
   'plan.submit_offline': 'Buat rencana dasar',
   'plan.manual': 'Atur manual',
   'plan.note': 'Betang AI menggunakan data dari BetangGO. Harga dan ketersediaan diperiksa sebelum bayar.',

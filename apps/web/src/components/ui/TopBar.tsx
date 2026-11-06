@@ -21,7 +21,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   onWordmarkClick
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full glass-panel px-3.5 py-2.5 flex items-center justify-between border-b border-[var(--glass-border)] shadow-sm">
+    <header className="w-full glass-panel px-3.5 py-2.5 flex items-center justify-between border-b border-[var(--glass-border)] shadow-sm">
       {/* Wordmark: BetangGO (GO in orange, no yellow dot) */}
       <div
         onClick={onWordmarkClick}

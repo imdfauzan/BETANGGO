@@ -17,7 +17,7 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({
   const [isFrameMode, setIsFrameMode] = useState(true);
 
   return (
-    <div className="h-screen h-[100dvh] w-full bg-[var(--bg)] flex flex-col items-center justify-start sm:justify-center p-0 sm:py-6 sm:px-4 transition-colors overflow-hidden">
+    <div className="h-full w-full bg-[var(--bg)] flex flex-col items-center justify-start sm:justify-center p-0 sm:py-6 sm:px-4 transition-colors overflow-hidden select-none">
       {/* Desktop view switcher bar */}
       <div className="hidden sm:flex items-center justify-between w-full max-w-[420px] mb-2 px-1 text-xs text-[var(--muted)]">
         <div className="font-semibold text-xs">
@@ -37,22 +37,30 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({
       <div
         className={`w-full bg-[var(--bg)] text-[var(--fg)] flex flex-col relative overflow-hidden transition-all duration-300 ${
           isFrameMode
-            ? 'h-screen h-[100dvh] sm:h-[844px] sm:max-h-[92vh] sm:max-w-[420px] sm:rounded-[36px] sm:border sm:border-[var(--border)] sm:shadow-2xl'
-            : 'h-screen h-[100dvh] max-w-2xl sm:border-x sm:border-[var(--border)]'
+            ? 'h-full sm:h-[844px] sm:max-h-[92vh] sm:max-w-[420px] sm:rounded-[36px] sm:border sm:border-[var(--border)] sm:shadow-2xl sm:[transform:translateZ(0)]'
+            : 'h-full max-w-2xl sm:border-x sm:border-[var(--border)] sm:[transform:translateZ(0)]'
         }`}
       >
-        {/* Fixed Top Section: TopBar, Alerts, Offline Notice (Non-scrolling) */}
-        {header && <div className="shrink-0 z-30 w-full">{header}</div>}
+        {/* Fixed Top Section: TopBar, Alerts (Pinned fixed to top of mobile screen / frame) */}
+        {header && (
+          <div className="fixed top-0 inset-x-0 z-40 flex justify-center pointer-events-none">
+            <div className="pointer-events-auto w-full max-w-[420px]">
+              {header}
+            </div>
+          </div>
+        )}
 
         {/* Scrollable View Content (Only this container scrolls!) */}
-        <div className="flex-1 w-full overflow-y-auto no-scrollbar relative bg-[var(--bg)]">
+        <div className="flex-1 w-full overflow-y-auto overscroll-contain no-scrollbar relative bg-[var(--bg)]">
           {children}
         </div>
 
-        {/* Floating Bottom Nav (Pinned fixed at bottom of screen/frame) */}
+        {/* Floating Bottom Nav (Pinned fixed to bottom of mobile screen / frame) */}
         {footer && (
-          <div className="absolute bottom-3 inset-x-0 z-40 flex justify-center pointer-events-none px-3">
-            {footer}
+          <div className="fixed bottom-3 inset-x-0 z-40 flex justify-center pointer-events-none px-3">
+            <div className="pointer-events-auto w-full max-w-[420px] flex justify-center">
+              {footer}
+            </div>
           </div>
         )}
 

@@ -89,13 +89,15 @@ export const AppContent: React.FC = () => {
         <>
           {/* Global Interactive Toast */}
           {toast && (
-            <div className="absolute bottom-24 inset-x-0 z-50 flex justify-center pointer-events-none px-4">
-              <Toast
-                message={toast.message}
-                actionLabel={toast.actionLabel}
-                onAction={toast.onAction}
-                isVisible={Boolean(toast)}
-              />
+            <div className="fixed bottom-24 inset-x-0 z-50 flex justify-center pointer-events-none px-4">
+              <div className="pointer-events-auto w-full max-w-[380px] flex justify-center">
+                <Toast
+                  message={toast.message}
+                  actionLabel={toast.actionLabel}
+                  onAction={toast.onAction}
+                  isVisible={Boolean(toast)}
+                />
+              </div>
             </div>
           )}
 
@@ -110,7 +112,7 @@ export const AppContent: React.FC = () => {
       }
     >
       {/* Scrollable View Area: only this area scrolls */}
-      <main className="w-full min-h-full flex flex-col pb-24">
+      <main className="w-full min-h-full flex flex-col pt-16 pb-28">
         {currentView === 'checkout' ? (
           <CheckoutScreen
             onBackToEditor={() => setCurrentView('editor')}
