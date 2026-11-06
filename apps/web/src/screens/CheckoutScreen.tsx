@@ -92,7 +92,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--muted)] hover:text-[var(--fg)] w-fit"
         >
           <ArrowLeft size={16} />
-          <span>{step === 'payment' ? 'Kembali ke Rincian' : 'Kembali ke Editor'}</span>
+          <span>{step === 'payment' ? t('checkout.back_details', lang) : t('checkout.back_editor', lang)}</span>
         </button>
       )}
 
@@ -118,7 +118,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
           {/* Itemized Breakdown */}
           <SurfaceCard rounded="card" level={1} className="p-3.5">
             <h3 className="text-xs font-bold uppercase text-[var(--muted)] mb-3">
-              Item yang Dipesan
+              {t('checkout.ordered_items', lang)}
             </h3>
 
             <div className="flex flex-col gap-2.5 divide-y divide-[var(--border)]">
@@ -138,7 +138,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
             </div>
 
             <div className="mt-4 pt-3 border-t-2 border-[var(--border)] flex items-center justify-between font-bold text-sm">
-              <span>Total Pembayaran</span>
+              <span>{t('checkout.total_pay', lang)}</span>
               <PriceText amountIdr={activeItinerary.total_cost_idr} lang={lang} size="md" className="text-[var(--primary)]" />
             </div>
           </SurfaceCard>
@@ -156,7 +156,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
               <PillInput
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Nama Anda"
+                placeholder="Nama Lengkap"
               />
             </div>
 
@@ -191,7 +191,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
             onClick={() => setStep('payment')}
             className="w-full font-bold justify-center"
           >
-            Lanjut ke Pembayaran
+            {t('checkout.proceed_pay', lang)}
           </PillButton>
         </div>
       )}
@@ -201,7 +201,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <h1 className="text-lg font-bold font-display text-[var(--fg)]">
-              Pembayaran Terpadu
+              {t('checkout.integrated_pay', lang)}
             </h1>
             <PriceText amountIdr={activeItinerary.total_cost_idr} lang={lang} size="md" className="text-[var(--primary)]" />
           </div>
@@ -251,7 +251,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
           ) : (
             <SurfaceCard rounded="card" level={1} className="p-4 flex flex-col gap-3">
               <div className="text-xs text-[var(--muted)]">
-                Pembayaran kartu internasional (Visa, Mastercard, JCB).
+                {lang === 'en' ? 'International card payments (Visa, Mastercard, JCB).' : 'Pembayaran kartu internasional (Visa, Mastercard, JCB).'}
               </div>
               <PillInput placeholder="4000 1234 5678 9010" />
               <div className="grid grid-cols-2 gap-2">
@@ -291,16 +291,16 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
 
           <SurfaceCard rounded="card" level={2} className="w-full p-4 text-left text-xs">
             <div className="flex justify-between py-1 border-b border-[var(--border)]">
-              <span className="text-[var(--muted)]">Pemesan</span>
+              <span className="text-[var(--muted)]">{t('checkout.customer', lang)}</span>
               <span className="font-bold text-[var(--fg)]">{name}</span>
             </div>
             <div className="flex justify-between py-1 border-b border-[var(--border)]">
-              <span className="text-[var(--muted)]">Metode</span>
+              <span className="text-[var(--muted)]">{t('checkout.method', lang)}</span>
               <span className="font-bold uppercase text-[var(--fg)]">{paymentRail}</span>
             </div>
             <div className="flex justify-between py-1">
-              <span className="text-[var(--muted)]">Status</span>
-              <span className="font-bold text-[var(--success)]">Lunas & Terbit</span>
+              <span className="text-[var(--muted)]">{t('checkout.status', lang)}</span>
+              <span className="font-bold text-[var(--success)]">{t('checkout.paid_issued', lang)}</span>
             </div>
           </SurfaceCard>
 
@@ -311,7 +311,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({
             onClick={onViewTrips}
             className="w-full font-bold justify-center mt-2"
           >
-            Buka Dompet Trip & E-Voucher
+            {t('checkout.open_wallet_btn', lang)}
           </PillButton>
         </div>
       )}

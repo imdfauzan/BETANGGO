@@ -41,7 +41,7 @@ export const TripsScreen: React.FC = () => {
           {t('trip.title', lang)}
         </h1>
         <p className="text-xs text-[var(--muted)]">
-          Tiket dan voucher tersimpan secara offline.
+          {t('trip.offline_sub', lang)}
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export const TripsScreen: React.FC = () => {
             {t('trip.empty', lang)}
           </h3>
           <p className="text-xs text-[var(--muted)] max-w-xs mb-5">
-            Rencanakan liburan impianmu bersama Betang AI dalam satu percakapan.
+            {t('trip.empty_sub', lang)}
           </p>
           <PillButton
             variant="primary"
@@ -74,7 +74,7 @@ export const TripsScreen: React.FC = () => {
             icon={<ArrowRight size={16} />}
             onClick={() => setActiveTab('ai')}
           >
-            Buka Betang AI
+            {t('trip.open_ai', lang)}
           </PillButton>
         </div>
       ) : (
@@ -91,7 +91,7 @@ export const TripsScreen: React.FC = () => {
             </h3>
 
             <div className="flex items-center justify-between text-xs text-[var(--muted)] mt-2 pt-2 border-t border-[var(--border)]">
-              <span>{currentOrder.vouchers.length} E-Voucher Terbit</span>
+              <span>{currentOrder.vouchers.length} {t('trip.vouchers_issued', lang)}</span>
               <button
                 type="button"
                 onClick={() => setSelectedInvoiceOrder(currentOrder)}

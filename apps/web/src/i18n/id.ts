@@ -26,8 +26,8 @@ export const id = {
 
   // Home (S-02)
   'home.hero.title': 'Rencanakan Liburanmu dalam 1 kalimat.',
-  'home.hero.subtitle': 'Ceritakan liburanmu. Betang AI menyusun jadwal, hotel, dan transportasi sesuai budget.',
-  'home.cta.plan': 'Rencanakan dengan Betang AI',
+  'home.hero.subtitle': 'Ceritakan liburanmu. Betang AI akan menyusun jadwal, hotel, dan transportasi sesuai budget.',
+  'home.cta.plan': 'Buat Rencana dengan Betang AI',
   'home.cta.explore': 'Jelajahi Kalteng',
   'home.featured.title': 'Destinasi pilihan',
   'home.featured.all': 'Lihat semua',
@@ -35,7 +35,7 @@ export const id = {
   'home.continue.trip': 'Trip aktif',
   'home.offline_maps': 'Unduh peta offline untuk perjalananmu',
   'home.safety_link': 'Tips transaksi aman',
-  'home.disruption': 'Ada gangguan di Sebangau: Banjir Dermaga Kereng. Lihat detail',
+  'home.disruption': 'Ada Banjir di Dermaga Kereng di Sebangau. Lihat detail',
 
   // Explore (S-03, S-04)
   'explore.search.placeholder': 'Cari tempat, kuliner, penginapan...',
@@ -64,12 +64,12 @@ export const id = {
 
   // Plan (S-08, S-09, S-10)
   'plan.title': 'Betang AI',
-  'plan.tagline': 'Asisten perjalanan pribadimu',
-  'plan.placeholder': 'Contoh: 5 hari 4 malam di Palangka Raya, budget 10 juta untuk 2 orang',
+  'plan.tagline': 'Pemandu liburanmu',
+  'plan.placeholder': 'Aku ingin liburan 5 hari 4 malam di Palangka Raya, budget 10 juta untuk 2 orang...',
   'plan.submit': 'Tanya Betang AI',
   'plan.submit_offline': 'Buat rencana dasar',
   'plan.manual': 'Atur manual',
-  'plan.note': 'Betang AI memakai data katalog BETANGGO. Harga dan ketersediaan diperiksa sebelum bayar.',
+  'plan.note': 'Betang AI menggunakan data dari BetangGO. Harga dan ketersediaan diperiksa sebelum bayar.',
   'plan.stage.intent': 'Memahami permintaanmu...',
   'plan.stage.retrieve': 'Memilih tempat yang cocok...',
   'plan.stage.solve': 'Menyusun jadwal dan rute...',
@@ -113,7 +113,7 @@ export const id = {
   'trip.tab.active': 'Aktif',
   'trip.tab.upcoming': 'Akan datang',
   'trip.tab.history': 'Riwayat',
-  'trip.empty': 'Belum ada trip aktif. Mulai rencanakan bersama Betang AI.',
+  'trip.empty': 'Belum ada rencana. Yuk liburan bersama Betang AI.',
   'trip.wallet.title': 'Dompet Trip (Offline Wallet)',
   'trip.voucher.confirmed': 'Terkonfirmasi',
   'trip.voucher.booking_code': 'Kode Booking',
@@ -122,16 +122,97 @@ export const id = {
 
   // Care (S-21 - S-25)
   'care.title': 'Betang Care & Bantuan',
-  'care.emergency': 'Kartu Darurat Kalteng',
-  'care.offline_safe': 'Kontak darurat ini tersimpan lokal dan dapat dibuka kapan saja tanpa internet.',
+  'care.emergency': 'Kontak Darurat Kalteng',
+  'care.offline_safe': 'Kontak darurat ini dapat dibuka kapan saja tanpa internet.',
   'care.problem': 'Butuh Bantuan Cepat?',
   'care.send': 'Kirim Tiket Bantuan',
-  'care.disruption_alert': 'Peringatan Gangguan Wilayah',
-  'care.replan': 'Rencanakan Ulang Otomatis',
+  'care.disruption_alert': 'Berita Peringatan !',
+  'care.replan': 'Rencanakan Ulang',
 
   // Safety (S-28)
   'safety.title': 'Panduan Transaksi Aman',
   'safety.rule1': 'Jangan pernah membagikan kode OTP atau PIN kepada siapapun.',
   'safety.rule2': 'Seluruh pembayaran resmi BETANGGO hanya diproses melalui QRIS dan portal berizin.',
-  'safety.rule3': 'Hindari transfer langsung ke rekening pribadi yang mengatasnamakan agen tanpa voucher resmi.'
+  'safety.rule3': 'Hindari transfer langsung ke rekening pribadi yang mengatasnamakan agen tanpa voucher resmi.',
+
+  // Home dynamic labels
+  'home.active_vouchers': 'E-Voucher Aktif',
+  'home.open_wallet': 'Buka Dompet',
+  'home.days_planned': 'Hari Perjalanan Disusun',
+  'home.view_plan': 'Lihat Rencana',
+
+  // Plan dynamic labels
+  'plan.voice_btn': 'Katakan disini',
+  'plan.try_asking': 'Coba tanya:',
+  'plan.region_label': 'Wilayah Tujuan',
+  'plan.duration_label': 'Durasi',
+  'plan.pax_label': 'Jumlah Orang',
+  'plan.days_unit': 'Hari',
+  'plan.people_unit': 'Orang',
+  'plan.budget_label': 'Total Budget Perjalanan',
+  'plan.interests_label': 'Fokus & Minat Perjalanan',
+  'plan.latest_plan': 'Rencana Terakhir',
+  'plan.continue_plan': 'Lanjutkan Rencanamu',
+  'plan.transcript': 'Transkripsi:',
+  'plan.voice_hint': 'Ketuk mikrofon untuk bicara',
+  'plan.voice_modal_title': 'Input Suara AI — Kokonut UI',
+
+  // Explore dynamic labels
+  'explore.showing': 'Menampilkan',
+  'explore.destinations': 'destinasi',
+  'explore.all_regions': 'Semua Wilayah',
+  'explore.minutes': 'mnt',
+  'explore.from_price': 'Mulai',
+
+  // Trips dynamic labels
+  'trip.offline_sub': 'Tiket dan voucher tersimpan secara offline.',
+  'trip.empty_sub': 'Buat liburanmu menyenangkan dengan Betang AI, chat saja.',
+  'trip.open_ai': 'Buka Betang AI',
+  'trip.vouchers_issued': 'E-Voucher Terbit',
+
+  // Care dynamic labels
+  'care.advice': 'Saran:',
+  'care.subject_placeholder': 'Subjek (mis. Perubahan jadwal kapal klotok)',
+  'care.message_placeholder': 'Ceritakan kendala atau kebutuhan Anda...',
+  'care.pin_warning': '* Jangan pernah menuliskan PIN atau kode rahasia di pesan bantuan.',
+  'care.sending': 'Tersimpan & Mengirim...',
+
+  // Editor dynamic labels
+  'editor.back_params': 'Atur Parameter',
+  'editor.days_trip': 'Hari Perjalanan',
+  'editor.select_alt': 'Pilih Pengganti Destinasi',
+  'editor.no_alt': 'Tidak ada alternatif destinasi yang cocok dalam slot waktu ini.',
+
+  // Checkout dynamic labels
+  'checkout.ordered_items': 'Item yang Dipesan',
+  'checkout.total_pay': 'Total Pembayaran',
+  'checkout.proceed_pay': 'Lanjut ke Pembayaran',
+  'checkout.integrated_pay': 'Pembayaran Terpadu',
+  'checkout.back_details': 'Kembali ke Rincian',
+  'checkout.back_editor': 'Kembali ke Editor',
+  'checkout.customer': 'Pemesan',
+  'checkout.method': 'Metode',
+  'checkout.status': 'Status',
+  'checkout.paid_issued': 'Lunas & Terbit',
+  'checkout.open_wallet_btn': 'Buka Dompet Trip & E-Voucher',
+
+  // Modal dynamic labels
+  'modal.opening_hours': 'Jam Operasional',
+  'modal.est_cost': 'Estimasi Tiket/Biaya',
+  'modal.how_to_reach': 'Cara Menuju Lokasi',
+  'modal.facilities': 'Fasilitas Tersedia',
+  'modal.saved_offline': 'Tersimpan Offline',
+  'modal.save_offline': 'Simpan Offline',
+  'modal.add_to_plan': 'Tambah ke Rencana',
+  'settings.title': 'Pengaturan & Profil',
+  'settings.language': 'Bahasa (Language)',
+  'settings.theme': 'Tema (Theme)',
+  'settings.offline_mode': 'Mode Offline',
+  'settings.offline_sub': 'Uji coba aplikasi saat tanpa koneksi internet',
+  'settings.data_saver': 'Mode Hemat Data',
+  'settings.data_saver_sub': 'Hanya memuat foto resolusi hemat',
+  'settings.storage_used': 'Memori Tersimpan Lokal (OPFS & DB)',
+  'settings.demo_portals': 'Portal Akses Khusus Demo',
+  'settings.partner_console': 'Konsol Mitra (P-01)',
+  'settings.admin_console': 'Konsol Admin (A-01)'
 };

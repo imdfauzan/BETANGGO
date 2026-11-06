@@ -459,7 +459,7 @@ export const SEED_DISRUPTIONS: Disruption[] = [
       en: 'Seasonal High Water at Kereng Bangkirai Pier'
     },
     description: {
-      id: 'Air sungai meluap sementara setinggi 30 cm di pelataran dermaga susur perahu Sebangau.',
+      id: 'Air sungai meluap setinggi 30 cm di sekitar dermaga susur perahu Sebangau.',
       en: 'Temporary river surge of 30 cm inundating the dock approach at Sebangau boat pier.'
     },
     severity: 'moderate',
@@ -483,7 +483,7 @@ export const EMERGENCY_CONTACTS = [
   },
   {
     id: 'emg-02',
-    name: 'Basarnas Kalimantan Tengah (Pencarian & Pertolongan)',
+    name: 'Basarnas Kalimantan Tengah',
     category: 'sar',
     phone: '115 / (0536) 3222115',
     address: 'Jl. Tjilik Riwut Km. 5, Palangka Raya',
@@ -491,11 +491,11 @@ export const EMERGENCY_CONTACTS = [
   },
   {
     id: 'emg-03',
-    name: 'Polda Kalimantan Tengah (Sentra Pelayanan)',
+    name: 'Polda Kalimantan Tengah',
     category: 'police',
     phone: '110 / (0536) 3221110',
     address: 'Jl. Tjilik Riwut Km. 1, Palangka Raya',
-    notes: 'Layanan keamanan & kepolisian turis 24 Jam'
+    notes: 'Layanan keamanan & kepolisian 24 Jam'
   },
   {
     id: 'emg-04',

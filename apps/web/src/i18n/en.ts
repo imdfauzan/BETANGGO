@@ -133,5 +133,86 @@ export const en = {
   'safety.title': 'Safe Payment Practices',
   'safety.rule1': 'Never share your OTP code or bank PIN with anyone.',
   'safety.rule2': 'Official BETANGGO payments are strictly processed via licensed QRIS & payment rails.',
-  'safety.rule3': 'Avoid direct bank transfers to personal accounts claiming to represent operators without verified vouchers.'
+  'safety.rule3': 'Avoid direct bank transfers to personal accounts claiming to represent operators without verified vouchers.',
+
+  // Home dynamic labels
+  'home.active_vouchers': 'Active E-Vouchers',
+  'home.open_wallet': 'Open Wallet',
+  'home.days_planned': 'Days Itinerary Planned',
+  'home.view_plan': 'View Plan',
+
+  // Plan dynamic labels
+  'plan.voice_btn': 'Say it here',
+  'plan.try_asking': 'Try asking:',
+  'plan.region_label': 'Destination Region',
+  'plan.duration_label': 'Duration',
+  'plan.pax_label': 'Travelers',
+  'plan.days_unit': 'Days',
+  'plan.people_unit': 'People',
+  'plan.budget_label': 'Total Trip Budget',
+  'plan.interests_label': 'Travel Interests & Focus',
+  'plan.latest_plan': 'Latest Plan',
+  'plan.continue_plan': 'Continue Your Plan',
+  'plan.transcript': 'Transcript:',
+  'plan.voice_hint': 'Tap mic to speak / test',
+  'plan.voice_modal_title': 'AI Voice Input — Kokonut UI',
+
+  // Explore dynamic labels
+  'explore.showing': 'Showing',
+  'explore.destinations': 'destinations',
+  'explore.all_regions': 'All Regions',
+  'explore.minutes': 'mins',
+  'explore.from_price': 'From',
+
+  // Trips dynamic labels
+  'trip.offline_sub': 'Tickets and vouchers are stored offline.',
+  'trip.empty_sub': 'Plan an exciting holiday with Betang AI, just ask.',
+  'trip.open_ai': 'Open Betang AI',
+  'trip.vouchers_issued': 'E-Vouchers Issued',
+
+  // Care dynamic labels
+  'care.advice': 'Advice:',
+  'care.subject_placeholder': 'Subject (e.g. Klotok boat schedule change)',
+  'care.message_placeholder': 'Describe your issue or request...',
+  'care.pin_warning': '* Never share PIN or secret codes in support messages.',
+  'care.sending': 'Saved & Sending...',
+
+  // Editor dynamic labels
+  'editor.back_params': 'Adjust Parameters',
+  'editor.days_trip': 'Days Trip',
+  'editor.select_alt': 'Select Alternative Destination',
+  'editor.no_alt': 'No alternative destinations found for this time slot.',
+
+  // Checkout dynamic labels
+  'checkout.ordered_items': 'Ordered Items',
+  'checkout.total_pay': 'Total Payment',
+  'checkout.proceed_pay': 'Proceed to Payment',
+  'checkout.integrated_pay': 'Integrated Payment',
+  'checkout.back_details': 'Back to Details',
+  'checkout.back_editor': 'Back to Editor',
+  'checkout.customer': 'Customer',
+  'checkout.method': 'Method',
+  'checkout.status': 'Status',
+  'checkout.paid_issued': 'Paid & Issued',
+  'checkout.open_wallet_btn': 'Open Trip Wallet & E-Vouchers',
+
+  // Modal dynamic labels
+  'modal.opening_hours': 'Opening Hours',
+  'modal.est_cost': 'Estimated Ticket/Cost',
+  'modal.how_to_reach': 'How to Get There',
+  'modal.facilities': 'Available Facilities',
+  'modal.saved_offline': 'Saved Offline',
+  'modal.save_offline': 'Save Offline',
+  'modal.add_to_plan': 'Add to Plan',
+  'settings.title': 'Settings & Profile',
+  'settings.language': 'Language',
+  'settings.theme': 'Theme',
+  'settings.offline_mode': 'Offline Mode',
+  'settings.offline_sub': 'Test app behavior without internet connection',
+  'settings.data_saver': 'Data Saver Mode',
+  'settings.data_saver_sub': 'Only load compressed low-res images',
+  'settings.storage_used': 'Local Storage Used (OPFS & DB)',
+  'settings.demo_portals': 'Demo Portals Access',
+  'settings.partner_console': 'Partner Console (P-01)',
+  'settings.admin_console': 'Admin Console (A-01)'
 };

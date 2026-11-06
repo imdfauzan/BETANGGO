@@ -24,7 +24,7 @@ export const ExploreScreen: React.FC = () => {
   ];
 
   const regions = [
-    { id: 'all', label: 'Semua Wilayah' },
+    { id: 'all', label: t('explore.all_regions', lang) },
     { id: 'palangka-raya', label: 'Palangka Raya' },
     { id: 'kobar', label: 'Kobar (Tanjung Puting)' },
     { id: 'gunung-mas', label: 'Gunung Mas' },
@@ -91,7 +91,7 @@ export const ExploreScreen: React.FC = () => {
       {/* Results Header with View Mode Switcher */}
       <div className="flex items-center justify-between text-xs text-[var(--muted)] px-1">
         <div className="flex items-center gap-2">
-          <span>Menampilkan {filteredDestinations.length} destinasi</span>
+          <span>{t('explore.showing', lang)} {filteredDestinations.length} {t('explore.destinations', lang)}</span>
           {(searchQuery || selectedKind !== 'all' || selectedRegion !== 'all') && (
             <button
               type="button"
@@ -218,11 +218,11 @@ export const ExploreScreen: React.FC = () => {
                       <div className="flex items-center justify-between pt-3 border-t border-[var(--border)] text-xs mt-3">
                         <div className="flex items-center gap-1 text-[var(--muted)]">
                           <Clock size={13} />
-                          <span>{dest.min_dwell_min} mnt</span>
+                          <span>{dest.min_dwell_min} {t('explore.minutes', lang)}</span>
                         </div>
 
                         <div className="flex items-center gap-1.5">
-                          <span className="text-[11px] text-[var(--muted)]">Mulai</span>
+                          <span className="text-[11px] text-[var(--muted)]">{t('explore.from_price', lang)}</span>
                           <PriceText amountIdr={dest.price_estimate_idr} lang={lang} size="sm" />
                         </div>
                       </div>
@@ -291,11 +291,11 @@ export const ExploreScreen: React.FC = () => {
                   <div className="flex items-center justify-between pt-2 border-t border-[var(--border)] text-xs">
                     <div className="flex items-center gap-1 text-[var(--muted)]">
                       <Clock size={13} />
-                      <span>{dest.min_dwell_min} mnt</span>
+                      <span>{dest.min_dwell_min} {t('explore.minutes', lang)}</span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[11px] text-[var(--muted)]">Mulai</span>
+                      <span className="text-[11px] text-[var(--muted)]">{t('explore.from_price', lang)}</span>
                       <PriceText amountIdr={dest.price_estimate_idr} lang={lang} size="sm" />
                     </div>
                   </div>

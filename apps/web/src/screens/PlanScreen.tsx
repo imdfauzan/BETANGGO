@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { PillButton } from '../components/ui/PillButton';
+import { ShimmerButton } from '../components/magicui/shimmer-button';
 import { SurfaceCard } from '../components/ui/SurfaceCard';
 import { PriceText } from '../components/ui/PriceText';
 import { BottomSheet } from '../components/ui/BottomSheet';
@@ -74,7 +75,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         'Explore Dayak culture and Kahayan river culinary in Palangka Raya'
       ]
       : [
-        'Rencanakan liburan 3 hari 2 malam di Palangka Raya dan Sebangau untuk 2 orang budget 5 juta',
+        'Buat rencana liburan 3 hari 2 malam di Palangkaraya dan Sebangau untuk 2 orang budget 5 juta',
         'Petualangan susur sungai klotok Tanjung Puting 4 hari melihat orangutan',
         'Eksplorasi budaya Dayak dan kuliner khas sungai Kahayan di Palangka Raya'
       ];
@@ -190,7 +191,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         >
           <Sparkles size={13} className="text-[var(--accent)] shrink-0" />
           <span className="font-semibold text-[var(--fg)] shrink-0">
-            {lang === 'en' ? 'Try asking:' : 'Ide rencana:'}
+            {lang === 'en' ? 'Try asking:' : 'Coba tanya:'}
           </span>
           <TextLoop
             className="text-xs text-[var(--primary)] font-medium truncate"
@@ -223,20 +224,20 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
             onClick={() => setVoiceModalOpen(true)}
             className="font-bold px-4 text-xs shadow-sm hover:brightness-105 active:scale-95"
           >
-            {lang === 'en' ? 'Say it here' : 'Katakan disini'}
+            {t('plan.voice_btn', lang)}
           </PillButton>
 
-          {/* Build Plan Button */}
-          <PillButton
-            variant="primary"
-            size="sm"
-            icon={<Send size={14} />}
+          {/* Build Plan Button (Magic UI Shimmer Effect) */}
+          <ShimmerButton
             disabled={isGenerating}
             onClick={() => handleStartPlanning(promptText)}
-            className="font-bold px-4 text-xs shadow-sm"
+            background="var(--primary)"
+            shimmerColor="#F6E8B8"
+            className="h-10 px-4 text-xs font-bold justify-center"
           >
-            {isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}
-          </PillButton>
+            <Send size={13} />
+            <span>{isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}</span>
+          </ShimmerButton>
         </div>
       </SurfaceCard>
 
@@ -261,7 +262,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         {/* Region Selector */}
         <div>
           <label className="text-xs font-semibold text-[var(--fg)] mb-1.5 block">
-            Wilayah Tujuan
+            {t('plan.region_label', lang)}
           </label>
           <div className="grid grid-cols-2 gap-2 text-xs">
             {[
@@ -287,7 +288,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="text-xs font-semibold text-[var(--fg)] mb-1.5 block">
-              Durasi: <span className="text-[var(--primary)] font-bold">{days} Hari</span>
+              {t('plan.duration_label', lang)}: <span className="text-[var(--primary)] font-bold">{days} {t('plan.days_unit', lang)}</span>
             </label>
             <input
               type="range"
@@ -301,7 +302,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
 
           <div>
             <label className="text-xs font-semibold text-[var(--fg)] mb-1.5 block">
-              Jumlah Orang: <span className="text-[var(--primary)] font-bold">{pax} Orang</span>
+              {t('plan.pax_label', lang)}: <span className="text-[var(--primary)] font-bold">{pax} {t('plan.people_unit', lang)}</span>
             </label>
             <input
               type="range"
@@ -318,7 +319,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
         <div>
           <div className="flex items-center justify-between mb-1.5">
             <label className="text-xs font-semibold text-[var(--fg)]">
-              Total Budget Perjalanan
+              {t('plan.budget_label', lang)}
             </label>
             <PriceText amountIdr={budgetIdr} lang={lang} size="sm" className="text-[var(--primary)]" />
           </div>
@@ -332,16 +333,16 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
             className="w-full accent-[var(--primary)]"
           />
           <div className="flex justify-between text-[10px] text-[var(--muted)] mt-1 font-mono">
-            <span>Rp 2 Juta</span>
-            <span>Rp 10 Juta</span>
-            <span>Rp 20 Juta</span>
+            <span>{lang === 'en' ? 'IDR 2M' : 'Rp 2 Juta'}</span>
+            <span>{lang === 'en' ? 'IDR 10M' : 'Rp 10 Juta'}</span>
+            <span>{lang === 'en' ? 'IDR 20M' : 'Rp 20 Juta'}</span>
           </div>
         </div>
 
         {/* Interest Chips */}
         <div>
           <label className="text-xs font-semibold text-[var(--fg)] mb-2 block">
-            Fokus & Minat Perjalanan
+            {t('plan.interests_label', lang)}
           </label>
           <div className="flex flex-wrap gap-2">
             {interestOptions.map((opt) => {
@@ -364,17 +365,18 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
           </div>
         </div>
 
-        {/* Submit Plan Button */}
+        {/* Submit Plan Button (Magic UI Shimmer Effect) */}
         <div className="pt-2">
-          <PillButton
-            variant="accent"
-            size="lg"
+          <ShimmerButton
             disabled={isGenerating}
             onClick={() => handleStartPlanning()}
-            className="w-full font-bold justify-center"
+            background="var(--accent)"
+            shimmerColor="#ffffff"
+            className="w-full h-13 font-bold justify-center text-sm text-[var(--on-accent)] shadow-sm"
           >
-            {isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}
-          </PillButton>
+            <Sparkles size={16} />
+            <span>{isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}</span>
+          </ShimmerButton>
         </div>
 
         {/* Fact Checking Note */}
@@ -393,11 +395,11 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
             className="flex items-center justify-between p-3.5"
           >
             <div>
-              <div className="text-[11px] font-bold text-[var(--muted)] uppercase">Rencana Terakhir</div>
+              <div className="text-[11px] font-bold text-[var(--muted)] uppercase">{t('plan.latest_plan', lang)}</div>
               <div className="text-xs font-bold text-[var(--fg)]">{activeItinerary.title[lang] || activeItinerary.title.id}</div>
             </div>
             <span className="text-xs font-bold text-[var(--primary)] flex items-center gap-1">
-              Buka Editor <ArrowRight size={13} />
+              {t('plan.continue_plan', lang)} <ArrowRight size={13} />
             </span>
           </SurfaceCard>
         </div>
@@ -407,13 +409,14 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
       <BottomSheet
         isOpen={voiceModalOpen}
         onClose={handleVoiceDiscard}
-        title={lang === 'en' ? 'AI Voice Input — Kokonut UI' : 'Input Suara AI — Kokonut UI'}
+        title={t('plan.voice_modal_title', lang)}
       >
         <div className="flex flex-col items-center gap-3 py-2 text-xs">
           <div className="w-full bg-[var(--surface-2)] rounded-[var(--r-card-lg)] p-4 border border-[var(--border)] flex flex-col items-center">
             {/* Real Interactive Kokonut UI Waveform and Voice Recorder */}
             <AI_Voice
               demo={false}
+              lang={lang}
               onListeningChange={handleListeningChange}
               onSend={handleVoiceSend}
               onDiscard={handleVoiceDiscard}
@@ -422,7 +425,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
 
             {liveTranscript && (
               <div className="w-full mt-2 p-2.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--fg)] text-center animate-fadeIn">
-                <span className="text-[var(--muted)] text-[10px] block mb-0.5">Transkripsi:</span>
+                <span className="text-[var(--muted)] text-[10px] block mb-0.5">{t('plan.transcript', lang)}</span>
                 "{liveTranscript}"
               </div>
             )}
@@ -431,7 +434,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
           <div className="flex items-center justify-between w-full text-[11px] text-[var(--muted)] px-1">
             <span className="flex items-center gap-1">
               <Volume2 size={13} className="text-[var(--primary)]" />
-              {lang === 'en' ? 'Tap mic to speak / test' : 'Ketuk mikrofon untuk bicara'}
+              {t('plan.voice_hint', lang)}
             </span>
             <span>Kokonut UI v2.1</span>
           </div>

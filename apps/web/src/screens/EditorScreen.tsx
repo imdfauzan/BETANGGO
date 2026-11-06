@@ -99,11 +99,11 @@ export const EditorScreen: React.FC<EditorScreenProps> = ({
           className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--muted)] hover:text-[var(--fg)]"
         >
           <ArrowLeft size={16} />
-          <span>Atur Parameter</span>
+          <span>{t('editor.back_params', lang)}</span>
         </button>
 
         <span className="text-xs font-bold text-[var(--primary)]">
-          {activeItinerary.days.length} Hari Perjalanan
+          {activeItinerary.days.length} {t('editor.days_trip', lang)}
         </span>
       </div>
 
@@ -193,12 +193,12 @@ export const EditorScreen: React.FC<EditorScreenProps> = ({
       <BottomSheet
         isOpen={Boolean(replaceTargetItemId)}
         onClose={() => setReplaceTargetItemId(null)}
-        title="Pilih Pengganti Destinasi"
+        title={t('editor.select_alt', lang)}
       >
         <div className="flex flex-col gap-3 py-2">
           {availableAlts.length === 0 ? (
             <p className="text-xs text-[var(--muted)] py-4 text-center">
-              Tidak ada alternatif lain yang cocok untuk kategori ini.
+              {t('editor.no_alt', lang)}
             </p>
           ) : (
             availableAlts.map((alt) => (

@@ -6,7 +6,7 @@ import { BottomNavPill } from './components/ui/BottomNavPill';
 import { OfflineNotice } from './components/ui/OfflineNotice';
 import { Toast } from './components/ui/Toast';
 
-import { SplashScreen } from './screens/SplashScreen';
+import { WelcomeScreen } from './screens/WelcomeScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { ExploreScreen } from './screens/ExploreScreen';
 import { MapScreen } from './screens/MapScreen';
@@ -52,7 +52,7 @@ export const AppContent: React.FC = () => {
   const [currentView, setCurrentView] = useState<'main' | 'editor' | 'checkout'>('main');
 
   if (showSplash) {
-    return <SplashScreen onDismiss={handleDismissSplash} lang={lang} />;
+    return <WelcomeScreen onNext={handleDismissSplash} onLogin={handleDismissSplash} lang={lang} />;
   }
 
   return (

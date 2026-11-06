@@ -1,6 +1,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import { PillButton } from '../components/ui/PillButton';
+import { ShimmerButton } from '../components/magicui/shimmer-button';
 import { GlassCard } from '../components/ui/GlassCard';
 import { SurfaceCard } from '../components/ui/SurfaceCard';
 import { PriceText } from '../components/ui/PriceText';
@@ -43,15 +44,15 @@ export const HomeScreen: React.FC = () => {
 
           {/* Action Buttons: Stacked vertically for clean mobile ergonomics */}
           <div className="flex flex-col gap-2.5 w-full">
-            <PillButton
-              variant="primary"
-              size="md"
-              icon={<MessageSquareQuote size={18} />}
+            <ShimmerButton
               onClick={() => setActiveTab('ai')}
-              className="w-full font-bold justify-center shadow-sm"
+              background="var(--primary)"
+              shimmerColor="#F6E8B8"
+              className="w-full h-12 font-bold justify-center shadow-sm"
             >
-              {t('home.cta.plan', lang)}
-            </PillButton>
+              <MessageSquareQuote size={18} />
+              <span>{t('home.cta.plan', lang)}</span>
+            </ShimmerButton>
 
             <PillButton
               variant="glass"
@@ -84,9 +85,9 @@ export const HomeScreen: React.FC = () => {
             {orders[0].itinerary.title[lang] || orders[0].itinerary.title.id}
           </div>
           <div className="mt-2 flex items-center justify-between text-xs text-[var(--muted)] pt-1.5 border-t border-[var(--border)]">
-            <span>{orders[0].vouchers.length} E-Voucher Aktif</span>
+            <span>{orders[0].vouchers.length} {t('home.active_vouchers', lang)}</span>
             <span className="font-semibold text-[var(--primary)] flex items-center gap-1">
-              Buka Dompet <ArrowRight size={12} />
+              {t('home.open_wallet', lang)} <ArrowRight size={12} />
             </span>
           </div>
         </SurfaceCard>
@@ -107,9 +108,9 @@ export const HomeScreen: React.FC = () => {
             {activeItinerary.title[lang] || activeItinerary.title.id}
           </div>
           <div className="mt-2 text-xs text-[var(--muted)] flex items-center justify-between pt-1.5 border-t border-[var(--border)]">
-            <span>{activeItinerary.days.length} Hari Perjalanan Disusun</span>
+            <span>{activeItinerary.days.length} {t('home.days_planned', lang)}</span>
             <span className="font-semibold text-[var(--primary)] flex items-center gap-1">
-              Lihat Rencana <ArrowRight size={12} />
+              {t('home.view_plan', lang)} <ArrowRight size={12} />
             </span>
           </div>
         </SurfaceCard>

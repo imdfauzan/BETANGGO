@@ -104,10 +104,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   ]);
 
-  // Apply theme to HTML tag
+  // Apply theme to HTML tag and classList for full Tailwind compatibility
   useEffect(() => {
     localStorage.setItem('betanggo_theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [theme]);
 
   const setLang = (newLang: Language) => {

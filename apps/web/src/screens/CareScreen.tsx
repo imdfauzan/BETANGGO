@@ -78,7 +78,7 @@ export const CareScreen: React.FC = () => {
           </p>
 
           <div className="p-2.5 rounded-[var(--r-card)] bg-[var(--surface)] text-[11px] text-[var(--fg)] border border-[var(--border)]">
-            <span className="font-bold text-[var(--primary)]">Saran Solusi: </span>
+            <span className="font-bold text-[var(--primary)]">{t('care.advice', lang)} </span>
             {activeDisruption.alternative_suggestion[lang] || activeDisruption.alternative_suggestion.id}
           </div>
 
@@ -130,21 +130,21 @@ export const CareScreen: React.FC = () => {
 
         <form onSubmit={handleSendTicket} className="flex flex-col gap-2.5">
           <PillInput
-            placeholder="Subjek (mis. Perubahan jadwal kapal klotok)"
+            placeholder={t('care.subject_placeholder', lang)}
             value={ticketSubject}
             onChange={(e) => setTicketSubject(e.target.value)}
           />
 
           <textarea
             rows={3}
-            placeholder="Ceritakan kendala atau kebutuhan Anda..."
+            placeholder={t('care.message_placeholder', lang)}
             value={ticketMsg}
             onChange={(e) => setTicketMsg(e.target.value)}
             className="w-full p-3 rounded-[var(--r-card)] border border-[var(--border)] bg-[var(--surface)] text-xs text-[var(--fg)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--primary)]"
           />
 
           <div className="text-[10px] text-[var(--muted)] italic">
-            * Jangan pernah menuliskan PIN atau kode rahasia di pesan bantuan.
+            {t('care.pin_warning', lang)}
           </div>
 
           <PillButton
@@ -155,7 +155,7 @@ export const CareScreen: React.FC = () => {
             disabled={ticketSent}
             className="w-full justify-center mt-1"
           >
-            {ticketSent ? 'Tersimpan & Mengirim...' : t('care.send', lang)}
+            {ticketSent ? t('care.sending', lang) : t('care.send', lang)}
           </PillButton>
         </form>
       </SurfaceCard>

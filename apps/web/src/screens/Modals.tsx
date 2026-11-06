@@ -58,7 +58,7 @@ export const DestinationDetailModal: React.FC = () => {
         <div className="p-3 rounded-[var(--r-card)] bg-[var(--surface-2)] text-xs flex flex-col gap-2 border border-[var(--border)]">
           <div className="flex items-center justify-between">
             <span className="text-[var(--muted)] flex items-center gap-1.5">
-              <Clock size={14} /> Jam Operasional
+              <Clock size={14} /> {t('modal.opening_hours', lang)}
             </span>
             <span className="font-bold text-[var(--fg)]">
               {dest.opening_hours.open} - {dest.opening_hours.close} WIB ({dest.opening_hours.days})
@@ -66,7 +66,7 @@ export const DestinationDetailModal: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-between pt-1.5 border-t border-[var(--border)]">
-            <span className="text-[var(--muted)]">Estimasi Tiket/Biaya</span>
+            <span className="text-[var(--muted)]">{t('modal.est_cost', lang)}</span>
             <PriceText amountIdr={dest.price_estimate_idr} lang={lang} size="sm" className="text-[var(--primary)]" />
           </div>
         </div>
@@ -74,7 +74,7 @@ export const DestinationDetailModal: React.FC = () => {
         {/* How to Reach */}
         <div className="text-xs">
           <div className="font-bold text-[var(--fg)] mb-1 flex items-center gap-1">
-            <MapPin size={13} className="text-[var(--primary)]" /> Cara Menuju Lokasi
+            <MapPin size={13} className="text-[var(--primary)]" /> {t('modal.how_to_reach', lang)}
           </div>
           <p className="text-[var(--muted)] leading-relaxed">
             {dest.how_to_reach[lang] || dest.how_to_reach.id}
@@ -83,7 +83,7 @@ export const DestinationDetailModal: React.FC = () => {
 
         {/* Facilities */}
         <div>
-          <div className="text-xs font-bold text-[var(--fg)] mb-1.5">Fasilitas Tersedia</div>
+          <div className="text-xs font-bold text-[var(--fg)] mb-1.5">{t('modal.facilities', lang)}</div>
           <div className="flex flex-wrap gap-1.5">
             {dest.facilities.map((fac, idx) => (
               <span key={idx} className="px-2.5 py-1 rounded-[var(--r-pill)] bg-[var(--surface-2)] text-[10px] text-[var(--fg)] border border-[var(--border)]">
@@ -109,7 +109,7 @@ export const DestinationDetailModal: React.FC = () => {
               }`}
           >
             {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
-            <span>{isSaved ? 'Tersimpan Offline' : 'Simpan Offline'}</span>
+            <span>{isSaved ? t('modal.saved_offline', lang) : t('modal.save_offline', lang)}</span>
           </button>
 
           <PillButton
@@ -118,11 +118,11 @@ export const DestinationDetailModal: React.FC = () => {
             onClick={() => {
               setDetailModalDestId(null);
               setActiveTab('ai');
-              showToast('Destinasi siap ditambahkan ke dalam rencana perjalanan');
+              showToast(lang === 'en' ? 'Destination ready to be added to itinerary' : 'Destinasi siap ditambahkan ke dalam rencana perjalanan');
             }}
             className="flex-1 font-bold justify-center"
           >
-            Tambah ke Rencana
+            {t('modal.add_to_plan', lang)}
           </PillButton>
         </div>
       </div>
@@ -149,11 +149,11 @@ export const SettingsModal: React.FC = () => {
   const [dataSaver, setDataSaver] = useState(false);
 
   return (
-    <BottomSheet isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} title="Pengaturan & Profil">
+    <BottomSheet isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} title={t('settings.title', lang)}>
       <div className="flex flex-col gap-4 py-2 text-xs">
         {/* Language */}
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-[var(--fg)]">Bahasa (Language)</span>
+          <span className="font-semibold text-[var(--fg)]">{t('settings.language', lang)}</span>
           <SegmentedPill<Language>
             size="sm"
             value={lang}
@@ -167,14 +167,14 @@ export const SettingsModal: React.FC = () => {
 
         {/* Theme */}
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-[var(--fg)]">Tema (Theme)</span>
+          <span className="font-semibold text-[var(--fg)]">{t('settings.theme', lang)}</span>
           <SegmentedPill<'light' | 'dark'>
             size="sm"
             value={theme}
             onChange={setTheme}
             options={[
-              { value: 'light', label: 'Terang' },
-              { value: 'dark', label: 'Gelap' }
+              { value: 'light', label: lang === 'en' ? 'Light' : 'Terang' },
+              { value: 'dark', label: lang === 'en' ? 'Dark' : 'Gelap' }
             ]}
           />
         </div>
@@ -184,15 +184,15 @@ export const SettingsModal: React.FC = () => {
           <div>
             <div className="font-bold text-[var(--fg)] flex items-center gap-1.5">
               {isOffline ? <WifiOff size={14} className="text-[var(--danger)]" /> : <Wifi size={14} className="text-[var(--success)]" />}
-              <span>Mode Offline</span>
+              <span>{t('settings.offline_mode', lang)}</span>
             </div>
-            <div className="text-[11px] text-[var(--muted)]">Uji coba aplikasi saat tanpa koneksi internet</div>
+            <div className="text-[11px] text-[var(--muted)]">{t('settings.offline_sub', lang)}</div>
           </div>
           <button
             type="button"
             onClick={() => {
               setIsOffline(!isOffline);
-              showToast(!isOffline ? 'Mode offline diaktifkan' : 'Koneksi online kembali aktif');
+              showToast(!isOffline ? (lang === 'en' ? 'Offline mode enabled' : 'Mode offline diaktifkan') : (lang === 'en' ? 'Online connection restored' : 'Koneksi online kembali aktif'));
             }}
             className={`w-12 h-6 rounded-full transition-colors relative ${isOffline ? 'bg-[var(--danger)]' : 'bg-stone-300 dark:bg-stone-700'}`}
           >
@@ -203,8 +203,8 @@ export const SettingsModal: React.FC = () => {
         {/* Data Saver */}
         <div className="flex items-center justify-between">
           <div>
-            <div className="font-semibold text-[var(--fg)]">Mode Hemat Data</div>
-            <div className="text-[11px] text-[var(--muted)]">Hanya memuat foto resolusi hemat</div>
+            <div className="font-semibold text-[var(--fg)]">{t('settings.data_saver', lang)}</div>
+            <div className="text-[11px] text-[var(--muted)]">{t('settings.data_saver_sub', lang)}</div>
           </div>
           <button
             type="button"
@@ -217,13 +217,13 @@ export const SettingsModal: React.FC = () => {
 
         {/* Storage status */}
         <div className="py-2.5 px-3 rounded-[var(--r-card)] bg-[var(--surface-2)] text-[11px] text-[var(--muted)] flex justify-between">
-          <span>Memori Tersimpan Lokal (OPFS & DB)</span>
+          <span>{t('settings.storage_used', lang)}</span>
           <span className="font-mono font-bold text-[var(--fg)]">58.4 MB</span>
         </div>
 
         {/* Admin & Partner Demo Shortcuts */}
         <div className="pt-2 border-t border-[var(--border)] flex flex-col gap-2">
-          <div className="text-[11px] font-bold uppercase text-[var(--muted)]">Portal Akses Khusus Demo</div>
+          <div className="text-[11px] font-bold uppercase text-[var(--muted)]">{t('settings.demo_portals', lang)}</div>
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
@@ -234,7 +234,7 @@ export const SettingsModal: React.FC = () => {
               className="py-2.5 px-3 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--border)] font-bold text-[var(--fg)] flex items-center justify-center gap-1.5 hover:bg-[var(--surface)]"
             >
               <Store size={14} className="text-[var(--primary)]" />
-              <span>Konsol Mitra (P-01)</span>
+              <span>{t('settings.partner_console', lang)}</span>
             </button>
 
             <button
@@ -246,7 +246,7 @@ export const SettingsModal: React.FC = () => {
               className="py-2.5 px-3 rounded-[var(--r-card)] bg-[var(--surface-2)] border border-[var(--border)] font-bold text-[var(--fg)] flex items-center justify-center gap-1.5 hover:bg-[var(--surface)]"
             >
               <Cpu size={14} className="text-[var(--accent)]" />
-              <span>Konsol Admin (A-01)</span>
+              <span>{t('settings.admin_console', lang)}</span>
             </button>
           </div>
         </div>
@@ -393,7 +393,6 @@ export const SafetyTipsModal: React.FC = () => {
           <ShieldCheck size={20} className="text-[var(--danger)] shrink-0 mt-0.5" />
           <div>
             <h4 className="font-bold text-[var(--fg)] mb-0.5">Jangan Pernah Bagikan OTP</h4>
-            <p className="text-[var(--muted)] leading-relaxed">{t('safety.rule1', lang)}</p>
           </div>
         </div>
 
