@@ -26,7 +26,7 @@ export const HomeScreen: React.FC = () => {
       <div className="relative w-full rounded-[var(--r-card-lg)] overflow-hidden border border-[var(--border)] min-h-[460px] flex flex-col justify-end p-4 shadow-sm">
         {/* Scrim & Hero Image - Central Kalimantan Rainforest */}
         <img
-          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80"
+          src="https://media.istockphoto.com/id/2150624550/id/foto/suku-dayak.jpg?s=612x612&w=0&k=20&c=nKH1KJEtoMdZpdFiRsxQSl0ISjNHbgtVt0NVHH1GYao="
           alt="Kalimantan Tengah"
           className="absolute inset-0 w-full h-full object-cover"
         />

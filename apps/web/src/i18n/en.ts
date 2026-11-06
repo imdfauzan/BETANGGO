@@ -25,7 +25,7 @@ export const en = {
   'nav.help': 'Help',
 
   // Home (S-02)
-  'home.hero.title': 'Plan Central Kalimantan in one conversation.',
+  'home.hero.title': 'Plan your Vacation in 1 sentence.',
   'home.hero.subtitle': 'Tell us your dream holiday. Betang AI arranges the schedule, stays, and transport within your budget.',
   'home.cta.plan': 'Plan with Betang AI',
   'home.cta.explore': 'Explore Central Kalimantan',
@@ -115,7 +115,7 @@ export const en = {
   'trip.tab.history': 'History',
   'trip.empty': 'No active trips yet. Start planning with Betang AI.',
   'trip.wallet.title': 'Trip Wallet (Offline Vouchers)',
-  'trip.voucher.confirmed': 'Confirmed & Offline-Ready',
+  'trip.voucher.confirmed': 'Confirmed',
   'trip.voucher.booking_code': 'Booking Code',
   'trip.invoice.view': 'View Invoice',
   'trip.invoice.download': 'Download Summary',

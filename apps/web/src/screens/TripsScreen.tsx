@@ -41,7 +41,7 @@ export const TripsScreen: React.FC = () => {
           {t('trip.title', lang)}
         </h1>
         <p className="text-xs text-[var(--muted)]">
-          Tiket dan voucher bertanda tangan digital siap dibuka tanpa internet.
+          Tiket dan voucher tersimpan secara offline.
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export const TripsScreen: React.FC = () => {
             {t('trip.empty', lang)}
           </h3>
           <p className="text-xs text-[var(--muted)] max-w-xs mb-5">
-            Rencanakan perjalanan Kalimantan Tengah impianmu bersama Betang AI dalam satu percakapan.
+            Rencanakan liburan impianmu bersama Betang AI dalam satu percakapan.
           </p>
           <PillButton
             variant="primary"
@@ -74,7 +74,7 @@ export const TripsScreen: React.FC = () => {
             icon={<ArrowRight size={16} />}
             onClick={() => setActiveTab('ai')}
           >
-            Mulai Rencanakan
+            Buka Betang AI
           </PillButton>
         </div>
       ) : (
@@ -108,7 +108,7 @@ export const TripsScreen: React.FC = () => {
             <div className="flex items-center justify-between text-xs font-bold text-[var(--fg)]">
               <span>{t('trip.wallet.title', lang)}</span>
               <span className="text-[var(--muted)] font-normal flex items-center gap-1">
-                <WifiOff size={12} className="text-[var(--success)]" /> Siap Offline
+                <WifiOff size={12} className="text-[var(--success)]" /> Offline ready
               </span>
             </div>
 
@@ -153,7 +153,7 @@ export const TripsScreen: React.FC = () => {
         {selectedVoucher && (
           <div className="flex flex-col items-center text-center py-2 gap-3">
             <div className="text-xs text-[var(--muted)]">
-              Tunjukkan QR ini ke mitra saat tiba. Berfungsi tanpa koneksi internet.
+              Tunjukkan QR ini untuk di Scan petugas.
             </div>
 
             {/* QR Code Container */}

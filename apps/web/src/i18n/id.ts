@@ -25,7 +25,7 @@ export const id = {
   'nav.help': 'Bantuan',
 
   // Home (S-02)
-  'home.hero.title': 'Rencanakan Kalteng dalam satu percakapan.',
+  'home.hero.title': 'Rencanakan Liburanmu dalam 1 kalimat.',
   'home.hero.subtitle': 'Ceritakan liburanmu. Betang AI menyusun jadwal, hotel, dan transportasi sesuai budget.',
   'home.cta.plan': 'Rencanakan dengan Betang AI',
   'home.cta.explore': 'Jelajahi Kalteng',
@@ -66,7 +66,7 @@ export const id = {
   'plan.title': 'Betang AI',
   'plan.tagline': 'Asisten perjalanan pribadimu',
   'plan.placeholder': 'Contoh: 5 hari 4 malam di Palangka Raya, budget 10 juta untuk 2 orang',
-  'plan.submit': 'Bangun rencana',
+  'plan.submit': 'Tanya Betang AI',
   'plan.submit_offline': 'Buat rencana dasar',
   'plan.manual': 'Atur manual',
   'plan.note': 'Betang AI memakai data katalog BETANGGO. Harga dan ketersediaan diperiksa sebelum bayar.',
@@ -115,7 +115,7 @@ export const id = {
   'trip.tab.history': 'Riwayat',
   'trip.empty': 'Belum ada trip aktif. Mulai rencanakan bersama Betang AI.',
   'trip.wallet.title': 'Dompet Trip (Offline Wallet)',
-  'trip.voucher.confirmed': 'Terkonfirmasi & Siap Offline',
+  'trip.voucher.confirmed': 'Terkonfirmasi',
   'trip.voucher.booking_code': 'Kode Booking',
   'trip.invoice.view': 'Lihat Invoice',
   'trip.invoice.download': 'Unduh Ringkasan',

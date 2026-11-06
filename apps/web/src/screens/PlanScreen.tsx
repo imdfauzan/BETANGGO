@@ -58,26 +58,26 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
     } else {
       try {
         recognitionRef.current?.stop();
-      } catch {}
+      } catch { }
     }
   };
 
   const handleVoiceSend = () => {
     try {
       recognitionRef.current?.stop();
-    } catch {}
+    } catch { }
 
     const sampleIdeas = lang === 'en'
       ? [
-          'Plan a 3-day trip in Palangka Raya and Sebangau for 2 people with 5 million budget',
-          'Tanjung Puting 4-day orangutan river cruise adventure with balanced pace',
-          'Explore Dayak culture and Kahayan river culinary in Palangka Raya'
-        ]
+        'Plan a 3-day trip in Palangka Raya and Sebangau for 2 people with 5 million budget',
+        'Tanjung Puting 4-day orangutan river cruise adventure with balanced pace',
+        'Explore Dayak culture and Kahayan river culinary in Palangka Raya'
+      ]
       : [
-          'Rencanakan liburan 3 hari 2 malam di Palangka Raya dan Sebangau untuk 2 orang budget 5 juta',
-          'Petualangan susur sungai klotok Tanjung Puting 4 hari melihat orangutan',
-          'Eksplorasi budaya Dayak dan kuliner khas sungai Kahayan di Palangka Raya'
-        ];
+        'Rencanakan liburan 3 hari 2 malam di Palangka Raya dan Sebangau untuk 2 orang budget 5 juta',
+        'Petualangan susur sungai klotok Tanjung Puting 4 hari melihat orangutan',
+        'Eksplorasi budaya Dayak dan kuliner khas sungai Kahayan di Palangka Raya'
+      ];
 
     const chosen = liveTranscript.trim() || sampleIdeas[Math.floor(Math.random() * sampleIdeas.length)];
     setPromptText(chosen);
@@ -88,26 +88,26 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
   const handleVoiceDiscard = () => {
     try {
       recognitionRef.current?.stop();
-    } catch {}
+    } catch { }
     setLiveTranscript('');
     setVoiceModalOpen(false);
   };
 
   const promptIdeas = lang === 'en'
     ? [
-        '5 days in Palangka Raya budget 10M',
-        'See orangutans in Tanjung Puting for 3 days',
-        'Dayak cultural & Betang house tour',
-        'Kahayan river cruise & local culinary trip',
-        'Relaxing weekend family trip'
-      ]
+      '5 days in Palangka Raya budget 10M',
+      'See orangutans in Tanjung Puting for 3 days',
+      'Dayak cultural & Betang house tour',
+      'Kahayan river cruise & local culinary trip',
+      'Relaxing weekend family trip'
+    ]
     : [
-        '5 hari di Palangka Raya budget 10 juta',
-        'Lihat orangutan di Tanjung Puting 3 hari',
-        'Wisata budaya Dayak & Rumah Betang',
-        'Susur sungai Kahayan & kuliner ikan bakar',
-        'Trip santai keluarga akhir pekan'
-      ];
+      '5 hari di Palangka Raya budget 10 juta',
+      'Lihat orangutan di Tanjung Puting 3 hari',
+      'Wisata budaya Dayak & Rumah Betang',
+      'Susur sungai Kahayan & kuliner ikan bakar',
+      'Trip santai keluarga akhir pekan'
+    ];
 
   const interestOptions = [
     { id: 'nature', label: lang === 'en' ? 'Rainforest & Peatland' : 'Alam Gambut' },
@@ -223,7 +223,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
             onClick={() => setVoiceModalOpen(true)}
             className="font-bold px-4 text-xs shadow-sm hover:brightness-105 active:scale-95"
           >
-            {lang === 'en' ? 'Voice Input' : 'Input Suara'}
+            {lang === 'en' ? 'Say it here' : 'Katakan disini'}
           </PillButton>
 
           {/* Build Plan Button */}
@@ -272,11 +272,10 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
                 key={r.id}
                 type="button"
                 onClick={() => setRegion(r.id)}
-                className={`py-2 px-3 rounded-[var(--r-card)] border text-left transition-all ${
-                  region === r.id
-                    ? 'border-[var(--primary)] bg-[var(--surface-2)] text-[var(--primary)] font-bold'
-                    : 'border-[var(--border)] bg-[var(--surface)] text-[var(--fg)]'
-                }`}
+                className={`py-2 px-3 rounded-[var(--r-card)] border text-left transition-all ${region === r.id
+                  ? 'border-[var(--primary)] bg-[var(--surface-2)] text-[var(--primary)] font-bold'
+                  : 'border-[var(--border)] bg-[var(--surface)] text-[var(--fg)]'
+                  }`}
               >
                 {r.label}
               </button>
@@ -352,11 +351,10 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
                   key={opt.id}
                   type="button"
                   onClick={() => handleToggleInterest(opt.id)}
-                  className={`px-3 py-1.5 rounded-[var(--r-pill)] text-xs font-medium border transition-all flex items-center gap-1.5 ${
-                    isSelected
-                      ? 'bg-[var(--primary)] text-[var(--on-primary)] border-transparent'
-                      : 'bg-[var(--surface)] text-[var(--fg)] border-[var(--border)] hover:bg-[var(--surface-2)]'
-                  }`}
+                  className={`px-3 py-1.5 rounded-[var(--r-pill)] text-xs font-medium border transition-all flex items-center gap-1.5 ${isSelected
+                    ? 'bg-[var(--primary)] text-[var(--on-primary)] border-transparent'
+                    : 'bg-[var(--surface)] text-[var(--fg)] border-[var(--border)] hover:bg-[var(--surface-2)]'
+                    }`}
                 >
                   {isSelected && <Check size={12} strokeWidth={3} />}
                   <span>{opt.label}</span>

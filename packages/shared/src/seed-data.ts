@@ -28,7 +28,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     facilities: ['Dermaga', 'Warung Kuliner', 'Pemandu Lokal', 'Musholla', 'Parkir'],
     how_to_reach: { id: '15 km (25 menit) berkendara roda dua atau empat dari Bundaran Besar.', en: '15 km (25 mins) drive by car/motorbike from Bundaran Besar.' },
     hero_color: '#1F5A3F',
-    image_url: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&auto=format&fit=crop&q=80',
+    image_url: 'https://assets-a1.kompasiana.com/items/album/2021/12/11/sungai-23ddc9a6bc6458bc6d24177de5f041d8-61b4b28a06310e6b1a338b72.jpg',
     is_demo: true
   },
   {
@@ -57,7 +57,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     facilities: ['Taman Kota', 'Plaza Pejalan Kaki', 'Spot Foto Kahayan'],
     how_to_reach: { id: '5 menit jalan kaki dari pusat pertokoan atau Bundaran Besar.', en: '5 minutes walk from Bundaran Besar town center.' },
     hero_color: '#2F7A56',
-    image_url: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&auto=format&fit=crop&q=80',
+    image_url: 'https://asset.kompas.com/crops/H4shBgqNTHGpIILZelyGDwP157E=/0x0:780x390/1200x800/data/photo/2015/05/05/0139528LombaFotoDrone011430756450-preview780x390.jpg',
     is_demo: true
   },
   {
@@ -115,7 +115,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     facilities: ['Gazebo', 'Spot Foto', 'Dermaga Klotok Wisata'],
     how_to_reach: { id: 'Hanya 5 menit dari Bundaran Besar ke arah Pahandut.', en: '5 minutes drive east from the city center.' },
     hero_color: '#4E7F43',
-    image_url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=80',
+    image_url: 'https://rricoid-assets.obs.ap-southeast-4.myhuaweicloud.com/berita/Palangkaraya/o/1742814530350-WhatsApp_Image_2025-03-24_at_17.51.34/cmmc2iqwfu7geje.jpeg',
     is_demo: true
   },
   {
@@ -123,7 +123,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     slug: 'hotel-rimba-kahayan',
     kind: 'lodging',
     region: 'palangka-raya',
-    name: { id: 'Hotel Rimba Kahayan (DEMO)', en: 'Rimba Kahayan Boutique Hotel (DEMO)' },
+    name: { id: 'Hotel Rimba Kahayan', en: 'Rimba Kahayan Boutique Hotel' },
     aliases: ['Rimba Kahayan Hotel'],
     summary: {
       id: 'Hotel bernuansa kayu ulin Dayak dan pemandangan hutan kota berfasilitas ramah lingkungan.',
@@ -153,7 +153,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     slug: 'homestay-betang-asri',
     kind: 'lodging',
     region: 'palangka-raya',
-    name: { id: 'Homestay Betang Asri (DEMO)', en: 'Betang Asri Cultural Homestay (DEMO)' },
+    name: { id: 'Homestay Betang Asri', en: 'Betang Asri Cultural Homestay' },
     aliases: ['Betang Asri Homestay'],
     summary: {
       id: 'Penginapan hemat ramah kantong berkonsep rumah panggung ramah keluarga.',
@@ -265,7 +265,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     facilities: ['Pemandu Sejarah', 'Pelataran Istana', 'Cinderamata'],
     how_to_reach: { id: '10 menit dari Bandara Iskandar Pangkalan Bun.', en: '10 mins drive from Iskandar Airport Pangkalan Bun.' },
     hero_color: '#E2B53A',
-    image_url: 'https://images.unsplash.com/photo-1548625361-195972855146?w=800&auto=format&fit=crop&q=80',
+    image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2wVYwHbXDfj2hgJZdnJHOkWiP645Z0KDUhKPhkgjkt4LGF9kPwyUpl6Y&s=10',
     is_demo: true
   },
   {
@@ -273,7 +273,7 @@ export const SEED_DESTINATIONS: Destination[] = [
     slug: 'rimba-ecolodge-sekonyer',
     kind: 'lodging',
     region: 'kobar',
-    name: { id: 'Rimba Ecolodge Sekonyer (DEMO)', en: 'Rimba Ecolodge Tanjung Puting (DEMO)' },
+    name: { id: 'Rimba Ecolodge Sekonyer', en: 'Rimba Ecolodge Tanjung Puting' },
     aliases: ['Rimba Ecolodge'],
     summary: {
       id: 'Penginapan ekologis di tepi Sungai Sekonyer yang hanya dapat diakses dengan perahu.',

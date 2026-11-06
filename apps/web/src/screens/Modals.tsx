@@ -103,11 +103,10 @@ export const DestinationDetailModal: React.FC = () => {
           <button
             type="button"
             onClick={() => toggleSaveOffline(dest.id)}
-            className={`flex-1 h-12 rounded-[var(--r-pill)] text-xs font-bold border transition-all flex items-center justify-center gap-2 ${
-              isSaved
-                ? 'bg-[var(--accent)] text-[var(--on-accent)] border-transparent'
-                : 'bg-[var(--surface-2)] text-[var(--fg)] border-[var(--border)] hover:bg-[var(--surface)]'
-            }`}
+            className={`flex-1 h-12 rounded-[var(--r-pill)] text-xs font-bold border transition-all flex items-center justify-center gap-2 ${isSaved
+              ? 'bg-[var(--accent)] text-[var(--on-accent)] border-transparent'
+              : 'bg-[var(--surface-2)] text-[var(--fg)] border-[var(--border)] hover:bg-[var(--surface)]'
+              }`}
           >
             {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
             <span>{isSaved ? 'Tersimpan Offline' : 'Simpan Offline'}</span>
@@ -154,7 +153,7 @@ export const SettingsModal: React.FC = () => {
       <div className="flex flex-col gap-4 py-2 text-xs">
         {/* Language */}
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-[var(--fg)]">Bahasa Tampilan (Language)</span>
+          <span className="font-semibold text-[var(--fg)]">Bahasa (Language)</span>
           <SegmentedPill<Language>
             size="sm"
             value={lang}
@@ -168,7 +167,7 @@ export const SettingsModal: React.FC = () => {
 
         {/* Theme */}
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-[var(--fg)]">Tema Tampilan (Theme)</span>
+          <span className="font-semibold text-[var(--fg)]">Tema (Theme)</span>
           <SegmentedPill<'light' | 'dark'>
             size="sm"
             value={theme}
@@ -185,7 +184,7 @@ export const SettingsModal: React.FC = () => {
           <div>
             <div className="font-bold text-[var(--fg)] flex items-center gap-1.5">
               {isOffline ? <WifiOff size={14} className="text-[var(--danger)]" /> : <Wifi size={14} className="text-[var(--success)]" />}
-              <span>Simulasi Mode Offline</span>
+              <span>Mode Offline</span>
             </div>
             <div className="text-[11px] text-[var(--muted)]">Uji coba aplikasi saat tanpa koneksi internet</div>
           </div>
@@ -309,9 +308,8 @@ export const PartnerConsoleModal: React.FC = () => {
           </PillButton>
 
           {verifiedResult && (
-            <div className={`p-2.5 rounded-[var(--r-card)] text-xs font-bold text-center ${
-              verifiedResult.includes('SAH') ? 'bg-[var(--success)]/15 text-[var(--success)]' : 'bg-[var(--danger)]/15 text-[var(--danger)]'
-            }`}>
+            <div className={`p-2.5 rounded-[var(--r-card)] text-xs font-bold text-center ${verifiedResult.includes('SAH') ? 'bg-[var(--success)]/15 text-[var(--success)]' : 'bg-[var(--danger)]/15 text-[var(--danger)]'
+              }`}>
               {verifiedResult}
             </div>
           )}
@@ -460,11 +458,10 @@ export const AskAiModal: React.FC = () => {
           {messages.map((m, idx) => (
             <div
               key={idx}
-              className={`p-3 rounded-2xl max-w-[85%] leading-relaxed ${
-                m.sender === 'user'
-                  ? 'bg-[var(--primary)] text-[var(--on-primary)] ml-auto rounded-br-sm'
-                  : 'bg-[var(--surface-2)] text-[var(--fg)] mr-auto rounded-bl-sm border border-[var(--border)]'
-              }`}
+              className={`p-3 rounded-2xl max-w-[85%] leading-relaxed ${m.sender === 'user'
+                ? 'bg-[var(--primary)] text-[var(--on-primary)] ml-auto rounded-br-sm'
+                : 'bg-[var(--surface-2)] text-[var(--fg)] mr-auto rounded-bl-sm border border-[var(--border)]'
+                }`}
             >
               {m.text}
             </div>

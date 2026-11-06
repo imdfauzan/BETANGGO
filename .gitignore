@@ -8,4 +8,6 @@ dist-ssr/
 !.env.example
 .DS_Store
 Thumbs.db
-
+.agents/
+skills-lock.json
+demo-out/
