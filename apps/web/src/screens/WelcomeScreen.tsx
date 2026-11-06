@@ -106,3 +106,4 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 };
 
 export default WelcomeScreen;
+

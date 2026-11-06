@@ -420,3 +420,4 @@ export const SkyGradient: React.FC<SkyGradientProps> = ({
 };
 
 export default SkyGradient;
+
