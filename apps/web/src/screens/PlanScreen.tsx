@@ -375,7 +375,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
             className="w-full h-13 font-bold justify-center text-sm text-[var(--on-accent)] shadow-sm"
           >
             <Sparkles size={16} />
-            <span>{isOffline ? t('plan.submit_offline', lang) : t('plan.submit_manual', lang)}</span>
+            <span>{isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}</span>
           </ShimmerButton>
         </div>
 
