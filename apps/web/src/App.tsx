@@ -9,7 +9,6 @@ import { Toast } from './components/ui/Toast';
 import { WelcomeScreen } from './screens/WelcomeScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { ExploreScreen } from './screens/ExploreScreen';
-import { MapScreen } from './screens/MapScreen';
 import { PlanScreen } from './screens/PlanScreen';
 import { EditorScreen } from './screens/EditorScreen';
 import { CheckoutScreen } from './screens/CheckoutScreen';
@@ -56,25 +55,62 @@ export const AppContent: React.FC = () => {
   }
 
   return (
-    <MobileFrame>
-      {/* Top Bar Navigation */}
-      <TopBar
-        lang={lang}
-        onLangChange={setLang}
-        theme={theme}
-        onThemeChange={setTheme}
-        onOpenSettings={() => setSettingsOpen(true)}
-        onWordmarkClick={() => {
-          setCurrentView('main');
-          setActiveTab('home');
-        }}
-      />
+    <MobileFrame
+      header={
+        <div className="w-full flex flex-col">
+          <TopBar
+            lang={lang}
+            onLangChange={setLang}
+            theme={theme}
+            onThemeChange={setTheme}
+            onOpenSettings={() => setSettingsOpen(true)}
+            onWordmarkClick={() => {
+              setCurrentView('main');
+              setActiveTab('home');
+            }}
+          />
+          <OfflineNotice isOffline={isOffline} lang={lang} />
+        </div>
+      }
+      footer={
+        currentView === 'main' ? (
+          <BottomNavPill
+            activeTab={activeTab}
+            onChangeTab={(tab) => {
+              setCurrentView('main');
+              setActiveTab(tab);
+            }}
+            lang={lang}
+            hasActiveTrip={orders.length > 0}
+          />
+        ) : null
+      }
+      overlay={
+        <>
+          {/* Global Interactive Toast */}
+          {toast && (
+            <div className="absolute bottom-24 inset-x-0 z-50 flex justify-center pointer-events-none px-4">
+              <Toast
+                message={toast.message}
+                actionLabel={toast.actionLabel}
+                onAction={toast.onAction}
+                isVisible={Boolean(toast)}
+              />
+            </div>
+          )}
 
-      {/* Offline Status Notice */}
-      <OfflineNotice isOffline={isOffline} lang={lang} />
-
-      {/* Main Routing Area */}
-      <main className="flex-1 w-full flex flex-col">
+          {/* Modals & Bottom Sheets */}
+          <DestinationDetailModal />
+          <SettingsModal />
+          <PartnerConsoleModal />
+          <AdminConsoleModal />
+          <SafetyTipsModal />
+          <AskAiModal />
+        </>
+      }
+    >
+      {/* Scrollable View Area: only this area scrolls */}
+      <main className="w-full min-h-full flex flex-col pb-24">
         {currentView === 'checkout' ? (
           <CheckoutScreen
             onBackToEditor={() => setCurrentView('editor')}
@@ -105,38 +141,8 @@ export const AppContent: React.FC = () => {
           </>
         )}
       </main>
-
-      {/* Bottom Floating Navigation Pill (Visible on Main View) */}
-      {currentView === 'main' && (
-        <BottomNavPill
-          activeTab={activeTab}
-          onChangeTab={(tab) => {
-            setCurrentView('main');
-            setActiveTab(tab);
-          }}
-          lang={lang}
-          hasActiveTrip={orders.length > 0}
-        />
-      )}
-
-      {/* Global Interactive Toast */}
-      {toast && (
-        <Toast
-          message={toast.message}
-          actionLabel={toast.actionLabel}
-          onAction={toast.onAction}
-          isVisible={Boolean(toast)}
-        />
-      )}
-
-      {/* Modals & Bottom Sheets */}
-      <DestinationDetailModal />
-      <SettingsModal />
-      <PartnerConsoleModal />
-      <AdminConsoleModal />
-      <SafetyTipsModal />
-      <AskAiModal />
     </MobileFrame>
   );
 };
 
+export default AppContent;

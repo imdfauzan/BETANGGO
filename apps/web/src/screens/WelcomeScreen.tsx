@@ -67,7 +67,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             <>
               Jelajahi Kalteng,
               <br />
-              satu langkah bersama Betang<span className="text-orange-400">GO</span>.
+              dengan Betang<span className="text-orange-400">GO</span>.
             </>
           )}
         </motion.h3>
@@ -77,8 +77,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           transition={{ delay: 0.5, duration: 0.6, ease: soft }}
         >
           {lang === 'en'
-            ? 'Plan your dream journey from Sebangau peatlands to Tanjung Puting orangutans effortlessly.'
-            : 'Rencanakan liburan impianmu dari rimba Sebangau hingga orangutan Tanjung Puting dalam satu percakapan.'}
+            ? 'Plan your dream journey effortlessly.'
+            : 'Rencanakan liburan impianmu dalam satu percakapan.'}
         </motion.p>
         <motion.button
           type="button"

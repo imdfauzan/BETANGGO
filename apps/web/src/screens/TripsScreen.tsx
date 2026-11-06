@@ -34,7 +34,7 @@ export const TripsScreen: React.FC = () => {
   const currentOrder = orders[0];
 
   return (
-    <div className="flex-1 flex flex-col gap-4 px-4 pt-3 pb-8 bg-transparent min-h-[calc(100vh-140px)]">
+    <div className="flex-1 flex flex-col gap-4 px-4 pt-3 pb-8 bg-[var(--bg)] min-h-[calc(100vh-140px)]">
       {/* Header */}
       <div>
         <h1 className="text-lg font-bold font-display text-[var(--fg)]">
@@ -58,7 +58,7 @@ export const TripsScreen: React.FC = () => {
 
       {/* Empty State */}
       {!currentOrder || orders.length === 0 ? (
-        <div className="py-16 text-center flex flex-col items-center bg-transparent">
+        <div className="py-16 text-center flex flex-col items-center bg-[var(--bg)]">
           <div className="w-14 h-14 rounded-full bg-[var(--surface-2)] text-[var(--muted)] flex items-center justify-center mb-3 border border-[var(--border)]">
             <QrCode size={26} />
           </div>
