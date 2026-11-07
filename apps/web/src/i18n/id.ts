@@ -31,7 +31,7 @@ export const id = {
   'home.cta.explore': 'Jelajahi Kalteng',
   'home.featured.title': 'Destinasi pilihan',
   'home.featured.all': 'Lihat semua',
-  'home.continue.draft': 'Lanjutkan rencana',
+  'home.continue.draft': 'Lanjutkan rencanamu',
   'home.continue.trip': 'Trip aktif',
   'home.offline_maps': 'Unduh peta offline untuk perjalananmu',
   'home.safety_link': 'Tips transaksi aman',
@@ -67,8 +67,9 @@ export const id = {
   'plan.tagline': 'Pemandu liburanmu',
   'plan.placeholder': 'Aku ingin liburan 5 hari 4 malam di Palangka Raya, budget 10 juta untuk 2 orang...',
   'plan.submit': 'Buat dengan Betang AI',
+  'plan.submit_manual': 'Buat Rencana',
   'plan.submit_offline': 'Buat rencana dasar',
-  'plan.manual': 'Atur manual',
+  'plan.manual': 'Atau Buat manual',
   'plan.note': 'Betang AI menggunakan data dari BetangGO. Harga dan ketersediaan diperiksa sebelum bayar.',
   'plan.stage.intent': 'Memahami permintaanmu...',
   'plan.stage.retrieve': 'Memilih tempat yang cocok...',
@@ -155,7 +156,7 @@ export const id = {
   'plan.continue_plan': 'Lanjutkan Rencanamu',
   'plan.transcript': 'Transkripsi:',
   'plan.voice_hint': 'Ketuk mikrofon untuk bicara',
-  'plan.voice_modal_title': 'Input Suara AI — Kokonut UI',
+  'plan.voice_modal_title': 'Input Suara AI',
 
   // Explore dynamic labels
   'explore.showing': 'Menampilkan',

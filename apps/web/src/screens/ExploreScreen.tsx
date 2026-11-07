@@ -4,9 +4,8 @@ import { PillInput } from '../components/ui/PillInput';
 import { FilterChip } from '../components/ui/FilterChip';
 import { SurfaceCard } from '../components/ui/SurfaceCard';
 import { PriceText } from '../components/ui/PriceText';
-import ScrollStack, { ScrollStackItem } from '../components/reactbits/ScrollStack';
-import { SEED_DESTINATIONS, DestinationKind } from '@betanggo/shared';
-import { Search, Clock, MapPin, Bookmark, BookmarkCheck, Layers, List } from 'lucide-react';
+import { SEED_DESTINATIONS } from '@betanggo/shared';
+import { Search, Clock, MapPin, Bookmark, BookmarkCheck } from 'lucide-react';
 import { t } from '../i18n';
 
 export const ExploreScreen: React.FC = () => {
@@ -14,7 +13,6 @@ export const ExploreScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedKind, setSelectedKind] = useState<string>('all');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
-  const [viewMode, setViewMode] = useState<'stack' | 'list'>('stack');
 
   const categories = [
     { id: 'all', label: t('explore.cat.all', lang) },
@@ -88,7 +86,7 @@ export const ExploreScreen: React.FC = () => {
         ))}
       </div>
 
-      {/* Results Header with View Mode Switcher */}
+      {/* Results Header */}
       <div className="flex items-center justify-between text-xs text-[var(--muted)] px-1">
         <div className="flex items-center gap-2">
           <span>{t('explore.showing', lang)} {filteredDestinations.length} {t('explore.destinations', lang)}</span>
@@ -106,135 +104,14 @@ export const ExploreScreen: React.FC = () => {
             </button>
           )}
         </div>
-
-        {/* View Mode Toggle (ScrollStack vs Grid/List) */}
-        <div className="flex items-center gap-0.5 bg-[var(--surface-2)] p-0.5 rounded-[var(--r-pill)] border border-[var(--border)]">
-          <button
-            type="button"
-            onClick={() => setViewMode('stack')}
-            className={`px-2 py-0.5 rounded-[var(--r-pill)] text-[11px] font-semibold flex items-center gap-1 transition-all ${
-              viewMode === 'stack'
-                ? 'bg-[var(--primary)] text-[var(--on-primary)] shadow-xs'
-                : 'text-[var(--muted)] hover:text-[var(--fg)]'
-            }`}
-            title="Animasi Scroll Stack (React Bits)"
-          >
-            <Layers size={11} />
-            <span>Stack</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setViewMode('list')}
-            className={`px-2 py-0.5 rounded-[var(--r-pill)] text-[11px] font-semibold flex items-center gap-1 transition-all ${
-              viewMode === 'list'
-                ? 'bg-[var(--primary)] text-[var(--on-primary)] shadow-xs'
-                : 'text-[var(--muted)] hover:text-[var(--fg)]'
-            }`}
-            title="Tampilan List Standar"
-          >
-            <List size={11} />
-            <span>List</span>
-          </button>
-        </div>
       </div>
 
-      {/* List / Stack of Destination Cards */}
+      {/* Destination Cards List */}
       {filteredDestinations.length === 0 ? (
         <div className="py-12 text-center text-xs text-[var(--muted)]">
           {t('explore.empty', lang)}
         </div>
-      ) : viewMode === 'stack' ? (
-        /* React Bits ScrollStack Mode */
-        <div className="w-full h-[580px] relative rounded-[var(--r-card-lg)] overflow-hidden border border-[var(--border)] bg-[var(--surface-2)]/20 shadow-inner">
-          <ScrollStack
-            itemDistance={90}
-            itemStackDistance={18}
-            stackPosition="5%"
-            itemScale={0.04}
-            baseScale={0.88}
-            dimAmount={0.16}
-            tiltAmount={2.5}
-            snap={true}
-            smoothScroll={true}
-          >
-            {filteredDestinations.map((dest) => {
-              const isSaved = savedOfflineDestIds.includes(dest.id);
-
-              return (
-                <ScrollStackItem
-                  key={dest.id}
-                  itemClassName="cursor-pointer overflow-hidden p-0 border border-[var(--border)] bg-[var(--surface)] shadow-md"
-                >
-                  <div
-                    onClick={() => setDetailModalDestId(dest.id)}
-                    className="h-full flex flex-col justify-between"
-                  >
-                    <div className="relative h-44 w-full">
-                      <img
-                        src={dest.image_url}
-                        alt={dest.name[lang] || dest.name.id}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Region Pill */}
-                      <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-[var(--r-pill)] bg-[var(--surface)]/90 backdrop-blur-sm text-[11px] font-bold text-[var(--fg)] border border-[var(--border)] flex items-center gap-1">
-                        <MapPin size={11} className="text-[var(--primary)]" />
-                        <span>
-                          {dest.region === 'palangka-raya'
-                            ? 'Palangka Raya'
-                            : dest.region === 'kobar'
-                            ? 'Kotawaringin Barat'
-                            : dest.region}
-                        </span>
-                      </div>
-
-                      {/* Bookmark Button */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleSaveOffline(dest.id);
-                        }}
-                        className={`absolute top-2.5 right-2.5 w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-sm ${
-                          isSaved
-                            ? 'bg-[var(--accent)] text-[var(--on-accent)]'
-                            : 'bg-[var(--surface)]/90 backdrop-blur-sm text-[var(--fg)] border border-[var(--border)] hover:bg-[var(--surface)]'
-                        }`}
-                        aria-label="Simpan offline"
-                      >
-                        {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
-                      </button>
-                    </div>
-
-                    <div className="p-4 flex-1 flex flex-col justify-between">
-                      <div>
-                        <h3 className="font-bold text-base text-[var(--fg)] mb-1">
-                          {dest.name[lang] || dest.name.id}
-                        </h3>
-                        <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">
-                          {dest.summary[lang] || dest.summary.id}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-3 border-t border-[var(--border)] text-xs mt-3">
-                        <div className="flex items-center gap-1 text-[var(--muted)]">
-                          <Clock size={13} />
-                          <span>{dest.min_dwell_min} {t('explore.minutes', lang)}</span>
-                        </div>
-
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[11px] text-[var(--muted)]">{t('explore.from_price', lang)}</span>
-                          <PriceText amountIdr={dest.price_estimate_idr} lang={lang} size="sm" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollStackItem>
-              );
-            })}
-          </ScrollStack>
-        </div>
       ) : (
-        /* Classic List Mode */
         <div className="flex flex-col gap-3.5">
           {filteredDestinations.map((dest) => {
             const isSaved = savedOfflineDestIds.includes(dest.id);
@@ -308,4 +185,3 @@ export const ExploreScreen: React.FC = () => {
     </div>
   );
 };
-

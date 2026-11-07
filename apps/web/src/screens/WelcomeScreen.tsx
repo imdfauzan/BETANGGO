@@ -5,17 +5,16 @@ import './welcome.css';
 
 const SOFT_EASE = [0.22, 1, 0.3, 1] as const;
 
-function CalmOrb() {
+function BreatheIcon() {
   return (
-    <div className="wc-orb-breathe">
-      <div className="wc-orb-halo" />
-      <div className="wc-orb" />
-      <span className="wc-blush wc-blush-l" aria-hidden="true" />
-      <span className="wc-blush wc-blush-r" aria-hidden="true" />
-      <svg className="wc-face" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M31 46 C 34.5 51.2, 39.5 51.2, 43 46" />
-        <path d="M57 46 C 60.5 51.2, 65.5 51.2, 69 46" />
-      </svg>
+    <div className="wc-icon-breathe">
+      <div className="wc-icon-halo" aria-hidden="true" />
+      <div className="wc-icon-glow" aria-hidden="true" />
+      <img
+        src="/media/icon.gif"
+        alt="BetangGO"
+        className="wc-icon-img"
+      />
     </div>
   );
 }
@@ -49,7 +48,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 0.15, duration: 0.9, ease: [0.34, 1.2, 0.5, 1] }}
       >
-        <CalmOrb />
+        <BreatheIcon />
       </motion.div>
       <div className="wc-content">
         <motion.h3

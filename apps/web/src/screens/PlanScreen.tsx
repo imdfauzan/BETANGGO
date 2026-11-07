@@ -375,7 +375,7 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
             className="w-full h-13 font-bold justify-center text-sm text-[var(--on-accent)] shadow-sm"
           >
             <Sparkles size={16} />
-            <span>{isOffline ? t('plan.submit_offline', lang) : t('plan.submit', lang)}</span>
+            <span>{isOffline ? t('plan.submit_offline', lang) : t('plan.submit_manual', lang)}</span>
           </ShimmerButton>
         </div>
 
@@ -436,7 +436,6 @@ export const PlanScreen: React.FC<PlanScreenProps> = ({ onOpenEditor }) => {
               <Volume2 size={13} className="text-[var(--primary)]" />
               {t('plan.voice_hint', lang)}
             </span>
-            <span>Kokonut UI v2.1</span>
           </div>
         </div>
       </BottomSheet>
