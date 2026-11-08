@@ -75,11 +75,10 @@ export const ExploreScreen: React.FC = () => {
             key={reg.id}
             type="button"
             onClick={() => setSelectedRegion(reg.id)}
-            className={`px-3 py-1.5 rounded-[var(--r-pill)] border transition-all shrink-0 text-xs font-medium ${
-              selectedRegion === reg.id
+            className={`px-3 py-1.5 rounded-[var(--r-pill)] border transition-all shrink-0 text-xs font-medium ${selectedRegion === reg.id
                 ? 'bg-[var(--surface-2)] border-[var(--primary)] text-[var(--primary)] font-bold'
                 : 'border-[var(--border)] text-[var(--muted)] hover:text-[var(--fg)]'
-            }`}
+              }`}
           >
             {reg.label}
           </button>
@@ -143,11 +142,10 @@ export const ExploreScreen: React.FC = () => {
                       e.stopPropagation();
                       toggleSaveOffline(dest.id);
                     }}
-                    className={`absolute top-2.5 right-2.5 w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-sm ${
-                      isSaved
+                    className={`absolute top-2.5 right-2.5 w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-sm ${isSaved
                         ? 'bg-[var(--accent)] text-[var(--on-accent)]'
                         : 'bg-[var(--surface)]/90 backdrop-blur-sm text-[var(--fg)] border border-[var(--border)] hover:bg-[var(--surface)]'
-                    }`}
+                      }`}
                     aria-label="Simpan offline"
                   >
                     {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}

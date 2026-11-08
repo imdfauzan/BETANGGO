@@ -11,3 +11,12 @@ Thumbs.db
 .agents/
 skills-lock.json
 demo-out/
+apps/remotion/
+media/Tim Dadakan_BetangGO_Video Pitch.mp4
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Local documentation
+BETANGGO_PRD copy.md
+PRD ai agent.md
